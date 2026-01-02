@@ -188,8 +188,12 @@ video {
 #menu > ul > li > a {
     display: inline-block;
     color: var(--color-secundario);
-    font-size: 3rem;
+    font-size: var(--tamano-texto-menu) *2;
     
+}
+
+#menu > ul > li:nth-child(4) {
+    margin-bottom: 50px;
 }
 
 #menu > ul > li:last-child {
@@ -205,12 +209,25 @@ video {
         display: none;
     }
 
-    .menu-btn-entradas {
+    .menu > .menu-actions .menu-btn-entradas {
         display: none;
     }
 
     .menu-icon {
         display: block;
+    }
+}
+
+@media (max-width: 780px) {
+    #menu .menu-btn-entradas {
+        display: flex;
+        justify-content: center;
+    }
+
+    #menu .menu-btn-entradas a {
+        width: min(90vw, 260px);
+        font-size: var(--tamano-texto-menu);
+        white-space: nowrap;
     }
 }
 
