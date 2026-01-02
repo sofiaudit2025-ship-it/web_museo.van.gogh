@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+/* VARIABLES */
+:root {
+    --color-primario-azul: #0C1625;
+    --color-secundari-blanco: #FFFFFF;
+    --color-destacados-amarillo: #D5A022;
+    --font-primary: "Italianno", cursive;
+    --font-secondary: "Helvetica", sans-serif;
+}
+
