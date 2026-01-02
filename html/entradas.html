@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <title>Van Gogh Museum</title>
+            <meta charset="utf-8">
+            
+            <!-- ARCHIVO EXTERNO DE CSS -->
+            <link href="../css/styles.css" rel="stylesheet" type="text/css">
+            <link href="#" rel="icon" type="image/png">
+            <!--ICONOS DE FONT AWESOME-->
+            <script src="https://kit.fontawesome.com/c3fd22b8e3.js" crossorigin="anonymous"></script>
+            
+            <!-- ARCHIVO EXTERNO DE JS -->
+            <script src="../js/jquery-3.7.1.min.js"></script>
+            <script src="../js/script.js"></script>
+    
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+        </head>
+
+        <body>
+
+            <!-- MENU -->
+            <div class="menu">
+                     <div class="menu-logo">
+                        <a href="index.html"><img src="../css/media/img/LogoMuseo-negro.webp" alt="VanGoghMuseum"></a>
+                     </div>
+                     <div class="menu-actions">
+                        <div class="menu-links">
+                            <a class="menu-cta" href="index.html">HOME</a>
+                            <a class="menu-cta" href="galeria.html">GALERÍA</a>
+                            <a class="menu-cta" href="entradas.html">EL MUSEO</a>
+                            <a class="menu-cta" href="merch.html">TIENDA</a>
+                        </div>
+
+                        <!-- cuando lo de las entradas esté maquetado poner que vaya al id del apartado de las entradas y asi hace scroll automatico directamente ahi  -->
+                        <div class="menu-btn-entradas">
+                            <a href="entradas.html">CONSIGUE TUS<br>ENTRADAS</a>
+                        </div>
+
+                        <button class="menu-icon" type="button" onclick="openMenu()" aria-label="Abrir menú">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                     </div>
+                 </div>
+                <nav id="menu">
+                    <ul>
+                        <li>
+                            <a href="index.html" onclick="closeMenu()">HOME</a>
+                        </li>
+                        <li>
+                            <a href="galeria.html" onclick="closeMenu()">GALERÍA</a>
+                        </li>
+                        <li>
+                            <a href="entradas.html" onclick="closeMenu()">EL MUSEO</a>
+                        </li>
+                        <li>
+                            <a href="merch.html" onclick="closeMenu()">TIENDA</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-xmark" onclick="closeMenu()"></i>
+                        </li>
+                    </ul>
+                </nav>
+        </body>
+
+        <section class="prueba">
+
+        </section>
+
+
+    </html>
