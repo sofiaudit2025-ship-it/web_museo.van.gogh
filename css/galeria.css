@@ -92,3 +92,71 @@ span {
         padding-top: clamp(6rem, 18vh, 9rem);
     }
 }
+
+
+
+/**
+/* GALERIA API */
+#gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 21px;
+}
+
+/* hijos flexbox */
+#gallery > .info-obra {
+    height: 25vh;
+    flex-grow: 1;
+    margin: 0;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+#gallery > .info-obra > img {
+    max-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#gallery > .info-obra > figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem 0.6rem;
+    color: var(--color-secundario);
+    background: linear-gradient(180deg, rgba(12, 22, 37, 0) 100%,rgba(12, 22, 37, 0) 70%, rgba(12, 22, 37, 0.85) 100%);
+}
+
+#gallery > .info-obra h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+#gallery > .info-obra p {
+    font-size: 0.7rem;
+    opacity: 0.85;
+}
+@media screen and (max-width: 840px) {
+    #gallery {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (width <= 460px) {
+    /* Ajusta altura de filas de la galeria */
+    #gallery > .info-obra {
+        height: auto;
+    }
+
+    #gallery > .info-obra > figcaption {
+        position: static;
+        background: none;
+        padding: 0.4rem 0 0;
+    }
+    
+}
