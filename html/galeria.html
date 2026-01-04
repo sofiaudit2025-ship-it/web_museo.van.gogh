@@ -14,7 +14,8 @@
             <!-- ARCHIVO EXTERNO DE JS -->
             <script src="../js/jquery-3.7.1.min.js"></script>
             <script src="../js/script.js"></script>
-            <script src="../js/galeria.js"></script>
+            <!-- defer para que no busque algo que aun no se ha creado en el html, es como ponerlo al final del html -->
+            <script defer src="../js/galeria.js"></script>
     
             <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
@@ -79,7 +80,7 @@
             </section>
             
 
-            <section id="gallery">
+            <!-- <section id="gallery">
                 <figure class="info-obra">
                     <img src="https://picsum.photos/1024/680" alt="Obra">
                     <figcaption>
@@ -269,7 +270,10 @@
                         </div>
                     </figcaption>
                 </figure>
-            </section>
+            </section> -->
+        
+            <section id="gallery"></section>
+            <section id="paginacion"></section>
         </body>
 
 
