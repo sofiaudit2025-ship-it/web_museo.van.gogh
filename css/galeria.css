@@ -2,9 +2,165 @@
 
 /* VARIABLES */
 :root {
-    --color-primario-azul: #0C1625;
-    --color-secundario-blanco: #FFFFFF;
-    --color-destacados-amarillo: #D5A022;
+    --color-primario: #0C1625;
+    --color-secundario: #FFFFFF;
+    --color-terciario: #000000;
+    --color-destacados: #D5A022;
     --font-primary: "Italianno", cursive;
+    --font-primary-weight: 400;
     --font-secondary: "Helvetica", sans-serif;
+    --degradado: linear-gradient(180deg, rgba(12, 22, 37, 0.68) 0%, rgba(12, 22, 37, 1) 100%);
+
+    --margenes-texto: 0.2rem 0.4rem;
+    --interlineado: 1.4;
+    --distancia-iconos: 1rem;
+    --tamano-texto-menu: 0.7rem;
+    --menu-side-width: clamp(120px, 18vw, 180px);
+    --menu-cta-line-height: 1.1;
+    --menu-bg-alpha: 0;
+}
+
+body {
+    background-color: var(--color-primario);
+}
+
+span {
+    font-family: var(--font-primary);
+    color: var(--color-secundario);
+}
+
+
+
+
+
+/**
+/* INTRO GALERÍA */
+.IntroGaleria {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(5rem, 14vh, 8rem) clamp(1.5rem, 8vw, 6rem) clamp(3rem, 10vh, 6rem);
+    background-image: var(--degradado), url("media/img/HeroIntroGaleria.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-secundario);
+}
+
+.introgaleria-content {
+    text-align: center;
+    max-width: 720px;
+}
+
+.introgaleria-title {
+    font-size: 6.5rem;
+}
+
+
+/* el span será galeria en azul para que se vea esa linea que separa la palabra galeria de virtual. se coloca por debajo de ::after, que es la palabra galeria en blanco que se ve. se colocan en exactamente la misma posición, por lo que modificando el line-height hago que la azul baje un poco y se vea */
+.introgaleria-title span {
+    position: relative;
+    display: inline-block;
+    font-size: 15.5rem;
+    font-weight: var(--font-primary-weight);
+    line-height: 0.05;
+    z-index: 5;
+    color: var(--color-primario);
+}
+
+.introgaleria-title span::after {
+    content: "galería";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 15.5rem;
+    font-weight: var(--font-primary-weight);
+    line-height: 0.01;
+    color: var(--color-secundario);
+    z-index: 4;
+}
+
+
+.introgaleria-content :nth-child(2) {
+    margin-top: -2rem;
+}
+
+@media (max-width: 700px) {
+    .IntroGaleria {
+        min-height: 70vh;
+        padding-top: clamp(6rem, 18vh, 9rem);
+    }
+}
+
+
+
+/**
+/* GALERIA API */
+#gallery {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 21px;
+}
+
+#gallery img {
+    width: auto;
+    height: 25vh;
+    flex-grow: 1;
+    margin: 0;
+    position: relative;
+    object-fit: cover;
+    display: block;
+}
+
+#paginacion {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0 2.5rem;
+}
+
+.btn-pagina {
+    min-width: 2.4rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+    color: var(--color-secundario);
+    font-size: var(--tamano-texto-menu);
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    margin: 4rem 0;
+}
+
+.btn-pagina:hover {
+    border-color: var(--color-destacados);
+    color: var(--color-destacados);
+}
+
+.btn-pagina.activo {
+    background-color: var(--color-destacados);
+    border-color: var(--color-destacados);
+    color: var(--color-terciario);
+}
+
+
+
+@media screen and (max-width: 840px) {
+    #gallery {
+        padding: 0 20px;
+    }
+}
+
+@media screen and (width <= 460px) {
+    /* ajusta altura de filas de la galeria */
+    #gallery img {
+        height: auto;
+    }
+
+    #pages {
+        flex-wrap: wrap;
+        padding: 1rem 0 2rem;
+    }
 }
