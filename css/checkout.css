@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+/* VARIABLES */
+:root {
+    --color-primario: #0C1625;
+    --color-secundario: #FFFFFF;
+    --color-terciario: #000000;
+    --color-destacados: #D5A022;
+    --font-primary: "Italianno", cursive;
+    --font-secondary: "Helvetica", sans-serif;
+    --margenes-texto: 0.2rem 0.4rem;
+    --interlineado: 1.4;
+    --distancia-iconos: 1rem;
+    --tamano-texto-menu: 0.7rem;
+    --menu-side-width: clamp(120px, 18vw, 180px);
+    --menu-cta-line-height: 1.1;
+    --menu-bg-alpha: 0;
+}
+
+body{
+    background-color: var(--color-primario);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-secondary);
+  background-color: var(--color-primario);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+
+}
+
+h1{
+    color: var(--color-secundario);
+    font-weight: 400;
+    font-size: 5rem;
+    line-height: 0.75;
+}
+
+h3{
+   font-weight: 400;
+   font-size: 1.5rem; 
+   font-family: var(--font-secondary);
+   color: var(--color-primario);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.checkout-container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    font-family: sans-serif;
+    color: var(--color-primario-azul);
+}
+
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.item-carrito img {
+    width: 60px;
+    border-radius: 5px;
+}
+
+.formulario-pago {
+    margin-top: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.campo {
+    margin-bottom: 15px;
+    color: var(--color-primario);
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo input, .campo textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-comprar {
+    background: var(--color-destacados);
+    color: var(--color-primario);
+    padding: 15px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.total {
+    font-size: 1.5rem;
+    text-align: right;
+    margin: 20px 0;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
+

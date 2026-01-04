@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Van Gogh Museum</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h1>Resumen de tu Pedido</h1>
+        
+        <!--productos -->
+        <div id="lista-productos"></div>
+        
+        <div class="total">Total: <span id="precio-total">0&#8364;</span></div>
+
+        <div class="formulario-pago">
+            <h3>Datos de Envío</h3>
+            <form id="form-pedido">
+                <div class="campo">
+                    <label>Nombre Completo</label>
+                    <input type="text" id="nombre" required placeholder="Ej: Juan Pérez">
+                </div>
+                <div class="campo">
+                    <label>Email</label>
+                    <input type="email" id="email" required placeholder="juan@ejemplo.com">
+                </div>
+                <div class="campo">
+                    <label>Dirección de Envío</label>
+                    <textarea id="direccion" required placeholder="Calle, número, ciudad..."></textarea>
+                </div>
+                <button type="submit" class="btn-comprar">CONFIRMAR Y FINALIZAR PEDIDO</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        function cargarCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('miCarrito')) || [];
+            const contenedor = document.getElementById('lista-productos');
+            let total = 0;
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = '<p style="color:white">Tu carrito está vacío. <a style="text-decoration:underline" href="merch.html">Volver a la tienda</a></p>';
+                return;
+            }
+
+            contenedor.innerHTML = '';
+            carrito.forEach((prod, index) => {
+                total += prod.price || prod.precio;
+                contenedor.innerHTML += `
+                    <div class="item-carrito">
+                        <div style="display:flex; align-items:center; gap:15px; color:white;">
+                            <img src="${prod.imagen}" alt="${prod.nombre}">
+                            <div>
+                                <strong>${prod.nombre}</strong>  
+
+                                <span>${prod.precio}€</span>
+                            </div>
+                        </div>
+                        <button onclick="eliminarDelCarrito(${index})" style="color:red; background:none; border:none; cursor:pointer;">Eliminar</button>
+                    </div>
+                `;
+            });
+
+            document.getElementById('precio-total').innerText = total.toFixed(2) + '€';
+        }
+
+        function eliminarDelCarrito(index) {
+            let carrito = JSON.parse(localStorage.getItem('miCarrito')) || [];
+            carrito.splice(index, 1);
+            localStorage.setItem('miCarrito', JSON.stringify(carrito));
+            cargarCarrito();
+        }
+
+        document.getElementById('form-pedido').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const orderId = Math.floor(Math.random() * 1000000);
+
+            alert("¡Gracias " + nombre + "! Tu pedido #" + orderId + " ha sido recibido.\n\nNos pondremos en contacto contigo por email para el pago.");
+            
+            localStorage.removeItem('miCarrito');
+            window.location.href = 'merch.html';
+        };
+
+        window.onload = cargarCarrito;
+    </script>
+</body>
+</html>
