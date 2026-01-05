@@ -101,7 +101,7 @@ function changeOpacity() {
     }
 
     // *1.5 para que tarde más en cambiar de opacidad 0 a 1
-    var maxScroll = window.innerHeight * 1.5;
+    var maxScroll = window.innerHeight;
     console.log("max_scroll: " + maxScroll);
 
     if (scroll <= maxScroll) {
