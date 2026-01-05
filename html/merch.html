@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../css/styles.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../css/merch.css">
+        <script src="https://kit.fontawesome.com/c3fd22b8e3.js" crossorigin="anonymous"></script>
         <script src="../js/jquery-3.7.1.min.js"></script>
         <script src="../js/script.js"></script>
         <script src="../js/merch.js"></script>
@@ -59,13 +60,11 @@
             </ul>
         </nav>
 
-    
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content">
       <p class="hero-subtitle">COLECCIÓN EXLUSIVA</p>
-      <h1 class="hero-title">el arte </h1>
-        <h1>EN TUS MANOS</h1>
+      <h1 class="hero-title">el arte<span class="gold" id="manos">EN TUS MANOS</span></h1>
       <p class="hero-desc">Descubre nuestra exclusiva colección de productos inspirados en las obras maestras de Vincent van Gogh.</p>
       <a href="#coleccion" class="btn-gold hero-cta">
         Explorar Catálogo
@@ -78,8 +77,8 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">
-          <span class="script gold">NUESTRA</span>
-          <span>Colección</span>
+          <span class="gold nuestra">NUESTRA</span>
+          <span class="script coleccion">Colección</span>
         </h2>
       </div>
 
@@ -93,11 +92,9 @@
         <button class="category-tab" data-category="arte">LENZOS Y LÁMINAS</button>
       </div>
 
-      <div class="product-grid">
-        <!-- Productos en javascript -->
+      <div class="product-grid" id="productGrid">
+        <!--Cards en JavaScript-->
       </div>
-
-
     </div>
   </section>
 
@@ -165,11 +162,70 @@
 
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+$(document).ready(function() {
 
-
-
-</body>
+  renderProducts('all');
+  
+  $('.category-tab').on('click', function() {
+    const category = $(this).data('category');
     
+    $('.category-tab').removeClass('active');
+    $(this).addClass('active');
+    
+    renderProducts(category);
+  });
+  
+  $('#menuToggle').on('click', function() {
+    $('#navLinks').toggleClass('show');
+  });
+  
+  $('a[href^="#"]').on('click', function(e) {
+    e.preventDefault();
+    const target = $(this.getAttribute('href'));
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top - 80
+      }, 800);
+    }
+  });
+});
 
+function renderProducts(category) {
+  const grid = $('#productGrid');
+  grid.empty();
+  
+  const filteredProducts = category === 'all' 
+    ? products 
+    : products.filter(p => p.category === category);
+  
+  filteredProducts.forEach((product, index) => {
+    const card = createProductCard(product, index);
+    grid.append(card);
+  });
+}
+
+function createProductCard(product, index) {
+  const largeClass = product.large ? 'large' : '';
+  
+  return `
+    <article class="product-card ${largeClass}" onclick="goToProduct('${product.id}')" style="animation-delay: ${index * 0.05}s">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <span class="product-category">${product.categoryLabel}</span>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-price">€${product.price.toFixed(2)}</p>
+      </div>
+    </article>
+  `;
+}
+
+function goToProduct(productId) {
+  window.location.href = `product.html?id=${productId}`;
+}
+
+</script>
+</body>
 </html>

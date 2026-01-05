@@ -234,15 +234,15 @@ video {
 /*Texto cabecera*/
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("../Resources/noche_estrellada_sobre_rodano.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 150px;
+  display: grid; 
+  align-content: flex-start; /* Alinea el contenido al principio (arriba) */
+  justify-items: stretch;
+  padding: 150px 0 50px 0;
 }
 
 .hero-overlay {
@@ -256,62 +256,259 @@ video {
   z-index: 1;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--color-secundario);
-  padding: 0 2rem;
+.hero-content { 
+    position: relative;
+    z-index: 2; 
+    text-align: center; 
+    color: var(--color-secundario); 
+    padding: 0 2rem; 
 }
 
+/* título */
 .hero-content h1 {
-  color: var(--color-destacados);
-  font-weight: 500;
-  letter-spacing: 0.7em;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.6em;
+    font-weight: 400;
+    color: var(--color-destacados);
+    margin-bottom: 0.8rem;
 }
 
+/* subtítulo */
 .hero-content p {
-  font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-secundario);
+    opacity: 0.9;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
-/*Textos laterales*/
 
 .info {
-  padding: 6rem clamp(1.5rem, 6vw, 6rem);
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  z-index: 1;
+    position: relative;
+    width: 100%;
+    display: flex;
+    z-index: 1;
+    margin-top: 30px;
+    flex-direction: column;
+    
 }
+
+/*INFO ITEMS */
 
 .info-item {
-  max-width: 520px;
+    width: 100%;
+    max-width: 500px;
+    color: var(--color-secundario);
+    z-index: 2;
+    padding: 2rem;
+    margin-bottom: 10px;
 }
 
+/* IZQUIERDA */
+.info-item.left {
+    justify-self: start;
+    text-align: left;
+    align-self: flex-start; /* Se pega al borde izquierdo */
+}
+
+/* DERECHA */
+.info-item.right {
+    justify-self: end;
+    text-align: right;
+    align-self: flex-end;
+}
+
+/* INFO txt*/
+
 .info-item h2 {
-  color: var(--color-destacados);
-  font-weight: 500;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-destacados);
 }
 
 .info-item p {
-  color: var(--color-secundario);
-  font-size: 0.95rem;
-  line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    
 }
 
-.info-item.left {
-  align-self: flex-start;
-  text-align: left;
+
+.cita {
+    background-color: var(--color-primario);
+    padding-top: 20px;
+    text-align: center;
+    color: var(--color-secundario);
 }
 
-.info-item.right {
-  align-self: flex-end;
-  text-align: right;
+.cita-contenido p {
+    font-size: 2.4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 0.5;
+    font-weight: 300;
+}
+
+
+.manuscrito {
+    font-family: var(--font-primary); /* Italianno */
+    font-size: 4.4rem;
+    font-weight: 400;
+}
+
+/* --- ESTILOS DE LA SECCIÓN ESTADÍSTICAS --- */
+.estadisticas {
+    background-color: var(--color-primario);
+    padding: 80px 20px 80px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 200px; /* Espacio entre los bloques de números */
+}
+
+.caja-numero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-secundario);
+    padding-bottom: 60px;
+    padding-top: 100px;
+}
+
+/* Estilo para los números grandes */
+.cifra {
+    font-family: var(--font-primary); /* Italianno */
+    font-size: 7rem;
+    margin-bottom: 0;
+    line-height: 0.5;
+}
+
+/* Estilo para el texto debajo de los números */
+.etiqueta {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    opacity: 1;
+    font-weight: 400;
+    color: var(--color-destacados);
+}
+
+/* --- SECCIÓN VISITA --- */
+/* --- ESTILOS SECCION VISITA --- */
+.visita {
+    background-color: var(--color-primario);
+    padding: 100px 5%;
+    color: var(--color-secundario);
+}
+
+.contenedor-visita {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.bloque-horario, .bloque-tarifas {
+    flex: 1;
+}
+
+/* Titulos y la pincelada del menu */
+.titulo-con-forma {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
+.titulo-con-forma h2 {
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+.pincelada {
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    width: 100%; /* Se ajusta al ancho del texto */
+    height: 12px;
+    background-color: var(--color-destacados);
+    z-index: 1;
+    /* Tu clip-path del menu */
+    clip-path: shape(from 57.07% 58.9%,curve by 0.43% 1.08% with -0.03% 1.87%/0.28% 0.99%,curve by 37.57% 16.36% with 12.48% 4.24%/25.17% -0.2%,curve by 4.23% 7.29% with 1.07% 1.48%/3.34% 3.65%,curve by -0.12% 16.36% with 1.01% 4.14%/0.91% 13.99%,curve by -28.8% -21.68% with -9.45% -16.36%/-19.21% -19.12%,curve by -19.54% -3.15% with -6.49% -1.77%/-13.06% -0.2%,curve by -1.98% -2.17% with -0.44% -0.2%/-1.64% -0.99%,curve by -0.62% -12.02% with -0.6% -2.07%/-0.82% -6.8%,curve by 1.25% -6.31% with 0.15% -3.94%/0.84% -5.22%,curve by 15.21% -23.65% with 4.34% -11.04%/10.63% -17.44%,curve by 10.67% -12.02% with 3.54% -4.83%/7.1% -9.76%,line by -1.29% -2.17%,curve to 1.11% 87.98% with 49.55% 20.37%/25.35% 61.17%,curve by -0.22% -17.15% with -1.34% -0.59%/-1.53% -14.09%,curve by 52.54% -60.51% with 17.52% -18.92%/34.96% -44.84%,curve by 26.46% -7.59% with 8.61% -7.69%/17.81% -14.19%,curve by 6.24% 9.17% with 0.99% 0.79%/5.7% 5.12%,curve by -0.96% 16.46% with 0.93% 7.1%/0.02% 14.78%,curve by -7.51% 4.63% with -2.24% 3.75%/-5.16% 2.66%,curve by -20.59% 25.92% with -6.92% 5.62%/-13.74% 16.36%,close);
+}
+
+/* Filas de texto */
+.fila-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    border-bottom: 1px solid transparent;
+    font-weight: 400;
+}
+
+.texto-negrita, .precio {
+    font-size: 1rem;      /* Mismo tamaño para ambos */
+    font-weight: 600;       /* Mismo grosor (Semi-bold) */
+    font-family: var(--font-secondary);
+}
+
+/* Cuadro de aviso (gris) */
+.cuadro-gris {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    margin-top: 50px;
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Tabla de tarifas */
+.tarifa-renglon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.detalle-tarifa {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.detalle-tarifa small {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+.precio {
+    font-weight: bold;
+}
+
+/* Boton de compra */
+.boton-dorado {
+    display: block;
+    width: 100%;
+    background-color: var(--color-destacados);
+    color: var(--color-terciario);
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.boton-dorado:hover {
+    filter: brightness(1.1);
 }
