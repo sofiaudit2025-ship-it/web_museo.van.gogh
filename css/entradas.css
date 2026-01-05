@@ -234,15 +234,15 @@ video {
 /*Texto cabecera*/
 .hero {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("../Resources/noche_estrellada_sobre_rodano.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 150px;
+  display: grid; 
+  align-content: flex-start; /* Alinea el contenido al principio (arriba) */
+  justify-items: stretch;
+  padding: 150px 0 50px 0;
 }
 
 .hero-overlay {
@@ -256,62 +256,141 @@ video {
   z-index: 1;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--color-secundario);
-  padding: 0 2rem;
+.hero-content { 
+    position: relative;
+    z-index: 2; 
+    text-align: center; 
+    color: var(--color-secundario); 
+    padding: 0 2rem; 
 }
 
+/* título */
 .hero-content h1 {
-  color: var(--color-destacados);
-  font-weight: 500;
-  letter-spacing: 0.7em;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.6em;
+    font-weight: 400;
+    color: var(--color-destacados);
+    margin-bottom: 0.8rem;
 }
 
+/* subtítulo */
 .hero-content p {
-  font-size: 1rem;
-  max-width: 600px;
-  margin: 0 auto;
-  letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-secundario);
+    opacity: 0.9;
+    max-width: 640px;
+    margin: 0 auto;
 }
 
-/*Textos laterales*/
 
 .info {
-  padding: 6rem clamp(1.5rem, 6vw, 6rem);
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  z-index: 1;
+    position: relative;
+    width: 100%;
+    display: flex;
+    z-index: 1;
+    margin-top: 30px;
+    flex-direction: column;
+    
 }
+
+/*INFO ITEMS */
 
 .info-item {
-  max-width: 520px;
+    width: 100%;
+    max-width: 500px;
+    color: var(--color-secundario);
+    z-index: 2;
+    padding: 2rem;
+    margin-bottom: 10px;
 }
 
+/* IZQUIERDA */
+.info-item.left {
+    justify-self: start;
+    text-align: left;
+    align-self: flex-start; /* Se pega al borde izquierdo */
+}
+
+/* DERECHA */
+.info-item.right {
+    justify-self: end;
+    text-align: right;
+    align-self: flex-end;
+}
+
+/* INFO txt*/
+
 .info-item h2 {
-  color: var(--color-destacados);
-  font-weight: 500;
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-destacados);
 }
 
 .info-item p {
-  color: var(--color-secundario);
-  font-size: 0.95rem;
-  line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    
 }
 
-.info-item.left {
-  align-self: flex-start;
-  text-align: left;
+
+.cita {
+    background-color: var(--color-primario);
+    padding-top: 20px;
+    text-align: center;
+    color: var(--color-secundario);
 }
 
-.info-item.right {
-  align-self: flex-end;
-  text-align: right;
+.cita-contenido p {
+    font-size: 2.4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 0.5;
+    font-weight: 300;
 }
+
+
+.manuscrito {
+    font-family: var(--font-primary); /* Italianno */
+    font-size: 4.4rem;
+    font-weight: 400;
+}
+
+/* --- ESTILOS DE LA SECCIÓN ESTADÍSTICAS --- */
+.estadisticas {
+    background-color: var(--color-primario);
+    padding: 80px 20px 80px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 200px; /* Espacio entre los bloques de números */
+}
+
+.caja-numero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-secundario);
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+/* Estilo para los números grandes */
+.cifra {
+    font-family: var(--font-primary); /* Italianno */
+    font-size: 7rem;
+    margin-bottom: 0;
+    line-height: 0.5;
+}
+
+/* Estilo para el texto debajo de los números */
+.etiqueta {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+    opacity: 1;
+    font-weight: 300;
+}
+
