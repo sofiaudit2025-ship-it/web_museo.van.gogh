@@ -445,12 +445,17 @@ video {
 .fila-info {
     display: flex;
     justify-content: space-between;
+    padding: 18px 0;
     margin-bottom: 25px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid transparent;
+    font-weight: 400;
 }
 
-.texto-negrita {
-    font-weight: bold;
+.texto-negrita, .precio {
+    font-size: 1rem;      /* Mismo tamaño para ambos */
+    font-weight: 600;       /* Mismo grosor (Semi-bold) */
+    font-family: var(--font-secondary);
 }
 
 /* Cuadro de aviso (gris) */
@@ -471,6 +476,8 @@ video {
     align-items: center;
     padding: 20px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .detalle-tarifa {
