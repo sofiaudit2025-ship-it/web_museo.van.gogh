@@ -14,6 +14,7 @@
             <!-- ARCHIVO EXTERNO DE JS -->
             <script src="../js/jquery-3.7.1.min.js"></script>
             <script src="../js/script.js"></script>
+            <script src="../js/entradas.js"></script>
     
             <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
@@ -73,7 +74,7 @@
             <div class="hero-container">
                 
                 <div class="hero-content">
-                    <h1>MUSEO VAN GOGH MADRID</h1>
+                    <h1>MUSEO VAN GOGH AMSTERDAM</h1>
                     <p>Una experiencia inmersiva a través de la obra de Vincent Van Gogh</p>
                 </div>
 
@@ -197,11 +198,165 @@
                         </div>
                     </div>
 
-                    <a href="entradas.html" class="boton-dorado">Compra tus entradas</a>
+                    <a href="javascript:void(0)" class="boton-dorado" onclick="abrirModal()">Compra tus entradas</a>
                 </div>
 
             </div>
         </section>
+
+        <section class="planifica">
+            <div class="titulo-planifica">
+                <h2><span class="manuscrito">Planifica</span> tu visita</h2>
+                <p>Todo lo que necesitas saber para disfrutar al máximo de tu experiencia en el Museo Van Gogh.</p>
+            </div>
+
+            <div class="grid-servicios">
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-wheelchair"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Accesibilidad</h3>
+                        <p>Acceso completo para sillas de ruedas, ascensores disponibles</p>
+                    </div>
+                </div>
+
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Tienda</h3>
+                        <p>Reproducciones de arte, libros y souvenirs exclusivos</p>
+                    </div>
+                </div>
+
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-mug-hot"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Cafetería</h3>
+                        <p>Restaurante y cafetería con terraza en el jardín</p>
+                    </div>
+                </div>
+
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-camera"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Fotografía</h3>
+                        <p>Permitidas las fotos sin flash en la mayoría de las salas</p>
+                    </div>
+                </div>
+
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-wifi"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Wifi gratuito</h3>
+                        <p>Conexión de alta velocidad en todas las áreas del museo</p>
+                    </div>
+                </div>
+
+                <div class="caja-servicio">
+                    <div class="icono-circulo"><i class="fa-solid fa-suitcase-rolling"></i></div>
+                    <div class="texto-servicio">
+                        <h3>Consigna</h3>
+                        <p>Guardarropa gratuito para abrigos y bolsas grandes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contacto-mapa">
+            <div class="contenedor-contacto">
+                
+                <div class="info-contacto">
+                    <h2>Encuentra tu museo <span class="manuscrito"><br>más cercano</span></h2>
+                    
+                    <div class="dato-contacto">
+                        <h3>Dirección</h3>
+                        <p>Museumplein 6, 1071 DJ<br>Ámsterdam, Países Bajos</p>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@vangoghmuseum.nl">info@vangoghmuseum.nl</a></p>
+                    </div>
+
+                    <div class="dato-contacto">
+                        <h3>Teléfono</h3>
+                        <p>+31 (0)20 570 5200</p>
+                    </div>
+                </div>
+
+                <div class="mapa-contenedor">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4695.686815517091!2d4.8812052999999995!3d52.3580757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609ef96d35a5f%3A0xc22828aef97cc51a!2sMuseo%20van%20Gogh!5e1!3m2!1ses!2ses!4v1767629410366!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </section>
+
+<div id="modal-entradas" class="modal-overlay">
+    <div class="modal-content-white">
+        <button class="cerrar-modal-dark" onclick="cerrarModal()">&times;</button>
+
+        <div class="modal-header-white">
+            <h2 class="manuscrito-blue">Reserva de Entradas</h2>
+            <div class="linea-progreso">
+                <div class="paso" id="dot-1">1</div>
+                <div class="linea"></div>
+                <div class="paso" id="dot-2">2</div>
+                <div class="linea"></div>
+                <div class="paso" id="dot-3">3</div>
+            </div>
+        </div>
+
+        <div class="modal-paso-v" id="paso-1">
+                <p class="instruccion">¿Cuántas personas vendrán?</p>
+                <div class="selector-entrada">
+                    <div class="info-ticket">
+                        <span class="tipo">Adulto</span>
+                        <span class="precio-unitario">22,00 €</span>
+                    </div>
+                    <div class="controles">
+                        <button class="btn-qty" onclick="cambiarCantidad('adulto', -1)">-</button>
+                        <span id="qty-adulto">0</span>
+                        <button class="btn-qty" onclick="cambiarCantidad('adulto', 1)">+</button>
+                    </div>
+                </div>
+                <div class="selector-entrada">
+                    <div class="info-ticket">
+                        <span class="tipo">Menores de 18 años</span>
+                        <span class="precio-unitario">Gratis</span>
+                    </div>
+                    <div class="controles">
+                        <button class="btn-qty" onclick="cambiarCantidad('nino', -1)">-</button>
+                        <span id="qty-nino">0</span>
+                        <button class="btn-qty" onclick="cambiarCantidad('nino', 1)">+</button>
+                    </div>
+                </div>
+                <button class="boton-azul-modal" onclick="irAPaso(2)">Siguiente</button>
+                </div>
+
+                <div class="modal-paso-v" id="paso-2" style="display:none;">
+                    <p class="instruccion">Selecciona fecha y hora</p>
+                    <input type="date" class="input-custom" id="fecha-reserva">
+                    <div class="grid-horas">
+                        <button class="hora-btn">09:00</button>
+                        <button class="hora-btn">11:00</button>
+                        <button class="hora-btn">13:00</button>
+                        <button class="hora-btn">15:00</button>
+                    </div>
+                    <div class="flex-btns">
+                        <button class="boton-link" onclick="irAPaso(1)">Volver</button>
+                        <button class="boton-azul-modal" onclick="irAPaso(3)">Siguiente</button>
+                    </div>
+                </div>
+
+                <div class="modal-paso-v" id="paso-3" style="display:none;">
+                    <p class="instruccion">Resumen de tu visita</p>
+                    <div class="resumen-caja">
+                        <p><strong>Entradas:</strong> <span id="resumen-qty">0</span></p>
+                        <p><strong>Total:</strong> <span id="resumen-total">0,00 €</span></p>
+                    </div>
+                    <button class="boton-azul-modal">Confirmar y Pagar</button>
+                </div>
+            </div>
+        </div>
 
         </body>
 

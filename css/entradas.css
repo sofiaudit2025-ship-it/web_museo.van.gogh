@@ -235,14 +235,14 @@ video {
 .hero {
   position: relative;
   min-height: 100vh;
-  background-image: url("../Resources/noche_estrellada_sobre_rodano.jpg");
+  background-image: url("../Resources/almendro_en_flor.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: grid; 
   align-content: flex-start; /* Alinea el contenido al principio (arriba) */
   justify-items: stretch;
-  padding: 150px 0 50px 0;
+  padding: 150px 0 20px 0;
 }
 
 .hero-overlay {
@@ -374,7 +374,7 @@ video {
     flex-direction: column;
     align-items: center;
     color: var(--color-secundario);
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     padding-top: 100px;
 }
 
@@ -399,7 +399,7 @@ video {
 /* --- ESTILOS SECCION VISITA --- */
 .visita {
     background-color: var(--color-primario);
-    padding: 100px 5%;
+    padding: 40px 5%;
     color: var(--color-secundario);
 }
 
@@ -409,6 +409,7 @@ video {
     display: flex;
     justify-content: space-between;
     gap: 100px;
+    
 }
 
 .bloque-horario, .bloque-tarifas {
@@ -453,8 +454,8 @@ video {
 }
 
 .texto-negrita, .precio {
-    font-size: 1rem;      /* Mismo tamaño para ambos */
-    font-weight: 600;       /* Mismo grosor (Semi-bold) */
+    font-size: 1rem;     
+    font-weight: 500;       
     font-family: var(--font-secondary);
 }
 
@@ -492,7 +493,7 @@ video {
 }
 
 .precio {
-    font-weight: bold;
+    font-weight: 500;
 }
 
 /* Boton de compra */
@@ -511,4 +512,254 @@ video {
 
 .boton-dorado:hover {
     filter: brightness(1.1);
+}
+
+/* --- SECCIÓN PLANIFICA --- */
+.planifica {
+    background-color: var(--color-primario);
+    padding: 20px 5% 100px 5%;
+    color: var(--color-secundario);
+    text-align: center;
+}
+
+.titulo-planifica {
+    margin-bottom: 60px;
+}
+
+.titulo-planifica h2 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.titulo-planifica p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* La cuadrícula de 3 columnas */
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.caja-servicio {
+    background-color: rgba(255, 255, 255, 0.1); 
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.caja-servicio:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+}
+
+/* El círculo dorado del icono */
+.icono-circulo {
+    background-color: var(--color-destacados);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Evita que el círculo se deforme */
+}
+
+.icono-circulo i {
+    color: var(--color-secundario);
+    font-size: 1.5rem;
+}
+
+/* Textos dentro de la caja */
+.texto-servicio h3 {
+    font-family: var(--font-primary); /* Fuente elegante */
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1px;
+}
+
+.texto-servicio p {
+    font-size: 0.85rem;
+    opacity: 1;
+    line-height: 1;
+    font-weight: 400;
+}
+
+
+/* --- SECCIÓN CONTACTO-MAPA --- */
+.contacto-mapa {
+    background-color: var(--color-primario); /* Fondo oscuro */
+    padding: 100px 5%;
+    color: var(--color-secundario);
+}
+
+.contenedor-contacto {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Alineación vertical al centro */
+    gap: 4px; /* Espacio entre el texto y el mapa */
+}
+
+/* Bloque de texto */
+.info-contacto {
+    flex: 1;
+    padding-left: 100px;
+}
+
+.info-contacto h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 0.5;
+    margin-bottom: 50px;
+}
+
+.dato-contacto {
+    margin-bottom: 30px;
+}
+
+.dato-contacto h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: none;
+    color: var(--color-destacados);
+}
+
+.dato-contacto p, 
+.dato-contacto a {
+    font-size: 1.1rem;
+    color: var(--color-secundario);
+    text-decoration: none;
+    opacity: 1;
+    line-height: 1.6;
+}
+
+
+
+/* Contenedor del Mapa */
+.mapa-contenedor {
+    flex: 1;
+    height: 450px;
+    overflow: hidden;
+}
+
+/* --- MODAL ESTILO BLANCO --- */
+.modal-content-white {
+    background-color: #FFFFFF; /* Fondo Blanco */
+    padding: 50px;
+    width: 95%;
+    max-width: 450px;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.manuscrito-blue {
+    font-family: var(--font-primary);
+    color: #0C1625;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.cerrar-modal-dark {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #0C1625;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Línea de progreso */
+.linea-progreso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.paso {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #0C1625;
+    color: #0C1625;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.paso.active {
+    background-color: #0C1625;
+    color: white;
+}
+
+.linea {
+    width: 40px;
+    height: 2px;
+    background-color: #0C1625;
+}
+
+/* Selectores de cantidad */
+.selector-entrada {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    color: #0C1625;
+}
+
+.info-ticket { text-align: left; }
+.info-ticket .tipo { display: block; font-weight: bold; }
+.info-ticket .precio-unitario { font-size: 0.9rem; color: #666; }
+
+.btn-qty {
+    border: 1px solid #0C1625;
+    background: white;
+    color: #0C1625;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-qty:hover { background: #0C1625; color: white; }
+
+/* Botones principales */
+.boton-azul-modal {
+    background-color: #0C1625;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    margin-top: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.boton-link {
+    background: none;
+    border: none;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
 }
