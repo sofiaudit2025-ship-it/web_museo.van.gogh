@@ -203,6 +203,7 @@
 
             </div>
         </section>
+        
 
         <section class="planifica">
             <div class="titulo-planifica">
@@ -290,73 +291,7 @@
             </div>
         </section>
 
-<div id="modal-entradas" class="modal-overlay">
-    <div class="modal-content-white">
-        <button class="cerrar-modal-dark" onclick="cerrarModal()">&times;</button>
 
-        <div class="modal-header-white">
-            <h2 class="manuscrito-blue">Reserva de Entradas</h2>
-            <div class="linea-progreso">
-                <div class="paso" id="dot-1">1</div>
-                <div class="linea"></div>
-                <div class="paso" id="dot-2">2</div>
-                <div class="linea"></div>
-                <div class="paso" id="dot-3">3</div>
-            </div>
-        </div>
-
-        <div class="modal-paso-v" id="paso-1">
-                <p class="instruccion">¿Cuántas personas vendrán?</p>
-                <div class="selector-entrada">
-                    <div class="info-ticket">
-                        <span class="tipo">Adulto</span>
-                        <span class="precio-unitario">22,00 €</span>
-                    </div>
-                    <div class="controles">
-                        <button class="btn-qty" onclick="cambiarCantidad('adulto', -1)">-</button>
-                        <span id="qty-adulto">0</span>
-                        <button class="btn-qty" onclick="cambiarCantidad('adulto', 1)">+</button>
-                    </div>
-                </div>
-                <div class="selector-entrada">
-                    <div class="info-ticket">
-                        <span class="tipo">Menores de 18 años</span>
-                        <span class="precio-unitario">Gratis</span>
-                    </div>
-                    <div class="controles">
-                        <button class="btn-qty" onclick="cambiarCantidad('nino', -1)">-</button>
-                        <span id="qty-nino">0</span>
-                        <button class="btn-qty" onclick="cambiarCantidad('nino', 1)">+</button>
-                    </div>
-                </div>
-                <button class="boton-azul-modal" onclick="irAPaso(2)">Siguiente</button>
-                </div>
-
-                <div class="modal-paso-v" id="paso-2" style="display:none;">
-                    <p class="instruccion">Selecciona fecha y hora</p>
-                    <input type="date" class="input-custom" id="fecha-reserva">
-                    <div class="grid-horas">
-                        <button class="hora-btn">09:00</button>
-                        <button class="hora-btn">11:00</button>
-                        <button class="hora-btn">13:00</button>
-                        <button class="hora-btn">15:00</button>
-                    </div>
-                    <div class="flex-btns">
-                        <button class="boton-link" onclick="irAPaso(1)">Volver</button>
-                        <button class="boton-azul-modal" onclick="irAPaso(3)">Siguiente</button>
-                    </div>
-                </div>
-
-                <div class="modal-paso-v" id="paso-3" style="display:none;">
-                    <p class="instruccion">Resumen de tu visita</p>
-                    <div class="resumen-caja">
-                        <p><strong>Entradas:</strong> <span id="resumen-qty">0</span></p>
-                        <p><strong>Total:</strong> <span id="resumen-total">0,00 €</span></p>
-                    </div>
-                    <button class="boton-azul-modal">Confirmar y Pagar</button>
-                </div>
-            </div>
-        </div>
 
         </body>
 
