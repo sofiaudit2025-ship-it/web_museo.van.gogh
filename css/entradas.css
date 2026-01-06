@@ -231,7 +231,7 @@ video {
     }
 }
 
-/*Texto cabecera*/
+/*fondo y general*/
 .hero {
   position: relative;
   min-height: 100vh;
@@ -244,7 +244,7 @@ video {
   justify-items: stretch;
   padding: 150px 0 20px 0;
 }
-
+/*degradado*/
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -258,33 +258,53 @@ video {
 
 .hero-content { 
     position: relative;
-    z-index: 2; 
-    text-align: center; 
-    color: var(--color-secundario); 
-    padding: 0 2rem; 
-}
-
-/* título */
-.hero-content h1 {
-    font-size: 0.85rem;
-    letter-spacing: 0.6em;
-    font-weight: 400;
-    color: var(--color-destacados);
-    margin-bottom: 0.8rem;
-}
-
-/* subtítulo */
-.hero-content p {
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    font-weight: 400;
-    line-height: 1.6;
+    z-index: 2;
+    text-align: justify;
     color: var(--color-secundario);
-    opacity: 0.9;
-    max-width: 640px;
-    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.diseno-titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/*amsterdam*/
+.tagline {
+    font-family: var(--font-secondary);
+    color: var(--color-destacados);
+    font-size: 1rem;
+    letter-spacing: 0.7em;
+    font-weight: 500;
+    z-index: 5;
+    margin-top: 2em;
+}
+
+.titulo-museo {
+    font-family: var(--font-secondary);
+    color: var(--color-destacados);
+    font-size: 5rem; 
+    font-weight: 800;
+    line-height: 0.9;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.titulo-artista {
+    font-family: var(--font-primary) ; 
+    color: var(--color-secundario); 
+    font-size: 10rem ; 
+    font-weight: 400;
+    line-height: 0.7; 
+    margin-top: -20px;
+    z-index: 3;
+    text-transform: none;
+}
 
 .info {
     position: relative;
@@ -654,3 +674,169 @@ video {
     overflow: hidden;
 }
 
+/*ventana modal*/
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal-content-white {
+    background: var(--color-secundario); 
+    width: 90%; 
+    max-width: 500px;
+    padding: 40px; 
+    position: relative;
+    font-family: var(--font-secondary); 
+    color: var(--color-primario);
+}
+
+.titulo-mixto-modal .manuscrito-blue {
+    font-family: var(--font-primary); 
+    font-size: 4rem;
+    color: var(--color-primario);
+    font-weight: 400;
+}
+
+
+
+/* Estilo para el título de dos tipografías */
+.titulo-mixto-modal {
+    font-family: var(--font-secondary);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    text-align: left;
+}
+
+.instruccion-paso {
+    margin-top: -15px;
+    margin-bottom: 2rem;
+}
+
+/* INDICADOR DE PASOS */
+.linea-pasos {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.paso-item { 
+    text-align: center; 
+    flex: 1; 
+}
+
+.circulo-paso {
+    width: 35px; 
+    height: 35px; 
+    border-radius: 50%; 
+    border: 1px solid var(--color-primario);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 0 auto 5px;
+    font-weight: bold;
+    background: var(--color-secundario);
+}
+
+.circulo-paso.active { 
+    background: var(--color-primario); 
+    color: var(--color-secundario); 
+}
+
+.conector { height: 1px; 
+    background: #ccc; 
+    flex: 0.5; 
+    margin-bottom: 25px; 
+}
+
+/* FORMULARIOS */
+.grupo-input { 
+    margin-bottom: 20px; 
+    text-align: left; 
+}
+
+.grupo-input label { 
+    display: block; 
+    font-size: 0.9rem; 
+    margin-bottom: 8px; 
+    font-weight: 600; 
+}
+
+.input-modal {
+    width: 100%; 
+    padding: 12px; 
+}
+
+.boton-azul-continuar {
+    background: var(--color-primario); 
+    color: var(--color-secundario); 
+    width: 100%; 
+    padding: 15px;
+    border: none; 
+    font-weight: bold; 
+    text-transform: uppercase; 
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Contenedor del aviso legal */
+.aviso-legal-box {
+    background-color: #f4f4f4; 
+    padding: 15px;            
+    margin-top: 20px;        
+}
+
+/* Texto dentro del aviso legal */
+.aviso-legal-box p {
+    font-family: var(--font-secondary);
+    font-size: 0.85rem;        
+    color: #666;              
+    line-height: 1.5;          
+    margin: 0;                 
+    text-align: left;         
+}
+.cerrar-modal-dark {
+    position: absolute;
+    top: 20px;
+    right: 20px; 
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-primario);
+    z-index: 100;
+}
+
+.fila-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-secundario);
+}
+
+.selector-controles {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre botones y número */
+}
+
+.selector-controles button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-secundario);
+    font-weight: bold;
+    cursor: pointer;
+}

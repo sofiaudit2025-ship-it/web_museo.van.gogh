@@ -74,8 +74,12 @@
             <div class="hero-container">
                 
                 <div class="hero-content">
-                    <h1>MUSEO VAN GOGH AMSTERDAM</h1>
-                    <p>Una experiencia inmersiva a través de la obra de Vincent Van Gogh</p>
+                    <div class="diseno-titulo">
+                        
+                        <h1 class="titulo-museo">MUSEO</h1>
+                        <h2 class="titulo-artista">Van Gogh</h2>
+                        <span class="tagline">AMSTERDAM</span>
+                    </div>
                 </div>
 
                 <div class="info">
@@ -199,6 +203,153 @@
                     </div>
 
                     <a href="javascript:void(0)" class="boton-dorado" onclick="abrirModal()">Compra tus entradas</a>
+                </div>
+
+                <div id="modal-entradas" class="modal-overlay">
+                    <div class="modal-content-white">
+                        <button class="cerrar-modal-dark" onclick="cerrarModal()">&times;</button>
+
+                        <div class="modal-paso" id="step-1">
+                            <h2 class="titulo-mixto-modal" id="t-step-1">
+                            <span class="manuscrito-blue">Selecciona
+                            </span> fecha y hora </h2>
+                            <p class="instruccion-paso">Elige cuándo quieres visitar el museo</p>
+
+                        <div class="modal-header-container">
+                            <div class="linea-pasos">
+                                <div class="paso-item" id="p1"><span class="circulo-paso active">1</span><p>Fecha</p></div>
+                                <div class="conector"></div>
+                                <div class="paso-item" id="p2"><span class="circulo-paso">2</span><p>Entradas</p></div>
+                                <div class="conector"></div>
+                                <div class="paso-item" id="p3"><span class="circulo-paso">3</span><p>Contacto</p></div>
+                            </div>
+                        </div>
+
+
+                            <div class="grupo-input">
+                                <label>Fecha de la visita*</label>
+                                <input type="date" id="fecha-visita" class="input-modal">
+                            </div>
+                            <div class="grupo-input">
+                                <label>Hora de entrada*</label>
+                                <select id="hora-entrada" class="input-modal">
+                                    <option value="09:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:00">11:30 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="12:30">12:30 PM</option>
+                                    <option value="13:00">13:00 PM</option>
+                                    <option value="13:30">13:30 PM</option>
+                                    <option value="14:00">14:00 PM</option>
+                                    <option value="14:30">14:30 PM</option>
+                                    <option value="16:00">16:00 PM</option>
+                                    <option value="16:30">16:30 PM</option>
+                                    <option value="17:00">17:00 PM</option>
+                                    <option value="17:30">17:30 PM</option>
+                                    <option value="18:00">18:00 PM</option>
+                                    <option value="18:30">18:30 PM</option>
+                                    <option value="19:00">19:00 PM</option>
+                                </select>
+                            </div>
+                            <button class="boton-azul-continuar" onclick="irAPaso(2)">Siguiente</button>
+                        </div>
+
+                        <div class="modal-paso" id="step-2" style="display:none;">
+                            <h2 class="titulo-mixto-modal">
+                                <span class="manuscrito-blue">Selecciona</span> tus entradas
+                            </h2>
+                            <p class="instruccion-paso">Elige la cantidad de cada tipo de entrada</p>
+
+                            <div class="modal-header-container">
+                                <div class="linea-pasos">
+                                    <div class="paso-item"><span class="circulo-paso active">1</span><p>Fecha</p></div>
+                                    <div class="conector"></div>
+                                    <div class="paso-item"><span class="circulo-paso active">2</span><p>Entradas</p></div>
+                                    <div class="conector"></div>
+                                    <div class="paso-item"><span class="circulo-paso">3</span><p>Contacto</p></div>
+                                </div>
+                            </div>
+
+                            <div class="fila-selector">
+                                <div class="info-t"><span>Adultos</span><strong>15€</strong></div>
+                                <div class="selector-controles">
+                                    <button onclick="cambiarCant('adulto', -1)">-</button>
+                                    <span id="cant-adulto">0</span>
+                                    <button onclick="cambiarCant('adulto', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="fila-selector">
+                                <div class="info-t"><span>Estudiantes (18-26)</span><strong>7.5€</strong></div>
+                                <div class="selector-controles">
+                                    <button onclick="cambiarCant('estudiante', -1)">-</button>
+                                    <span id="cant-estudiante">0</span>
+                                    <button onclick="cambiarCant('estudiante', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="fila-selector">
+                                <div class="info-t"><span>Jubilados / Menores 18</span><strong>Gratis</strong></div>
+                                <div class="selector-controles">
+                                    <button onclick="cambiarCant('gratis', -1)">-</button>
+                                    <span id="cant-gratis">0</span>
+                                    <button onclick="cambiarCant('gratis', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="resumen-total">
+                                <p>Total: <strong id="total-compra">0€</strong></p>
+                            </div>
+                            
+                            <button class="boton-azul-continuar" onclick="irAPaso(3)">Siguiente</button>
+                        </div>
+
+                        <div class="modal-paso" id="step-3" style="display:none;">
+                            
+                            <h2 class="titulo-mixto-modal">
+                                <span class="manuscrito-blue">Información</span> de contacto
+                            </h2>
+                            <p class="bajada-modal" style="margin-top: -15px;"> Completa tus datos para finalizar la compra</p>
+
+                            <div class="modal-header-container">
+                                <div class="linea-pasos">
+                                    <div class="paso-item">
+                                        <span class="circulo-paso active">1</span>
+                                        <p>Fecha y hora</p>
+                                    </div>
+                                    <div class="conector"></div>
+                                    <div class="paso-item">
+                                        <span class="circulo-paso active">2</span>
+                                        <p>Entradas</p>
+                                    </div>
+                                    <div class="conector"></div>
+                                    <div class="paso-item">
+                                        <span class="circulo-paso active">3</span>
+                                        <p>Datos personales</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grupo-input">
+                                <label>Nombre y Apellidos *</label>
+                                <input type="text" id="nombre-cliente" class="input-modal" placeholder="Nombre completo">
+                            </div>
+
+                            <div class="grupo-input">
+                                <label>Correo electrónico *</label>
+                                <input type="email" id="email-cliente" class="input-modal" placeholder="ejemplo@correo.com">
+                            </div>
+
+                            <div class="aviso-legal-box">
+                                <p >
+                                    Tus datos se utilizarán únicamente para el envío de las entradas. Al finalizar, recibirás un PDF en tu correo electrónico.
+                                </p>
+                            </div>
+
+                            <button class="boton-azul-continuar" onclick="finalizarCompra()">Finalizar Compra</button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
