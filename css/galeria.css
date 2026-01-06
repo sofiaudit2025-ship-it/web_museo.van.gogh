@@ -24,7 +24,7 @@ body {
     background-color: var(--color-primario);
 }
 
-span {
+.IntroGaleria span {
     font-family: var(--font-primary);
     color: var(--color-secundario);
 }
