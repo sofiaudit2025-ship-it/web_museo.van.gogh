@@ -63,7 +63,7 @@ function rellenarGaleria(array, desde = 0) {
         })
         .catch(error => {
             console.error('Error al obtener las imágenes del MET:', error);
-            $("#gallery").append(`<h2>Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
+            $("#gallery").append(`<h2><i class="fa-solid fa-triangle-exclamation"></i> Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
         });
     }
 }
@@ -79,7 +79,7 @@ $(document).ready(function() {
         // como la api del met a veces falla y no deja cargar los objetos, cuando falle hacer que salte un mensaje de error para que el usuario espere y recargue la página
         if (imagenes.length === 0) {    
             console.log("no hay imágenes");
-            $("#gallery").append(`<h2>Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
+            $("#gallery").append(`<h2><i class="fa-solid fa-triangle-exclamation"></i> Servidor sobrecargado. <br> Por favor, inténtelo más tarde.</h2>`);
             return;
         }
         let indice = 0;

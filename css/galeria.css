@@ -208,3 +208,23 @@ body {
     }
 }
 
+
+/**
+/* ESTILOS MENSAJE ERROR */
+#gallery h2 {
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    text-align: center;
+    font-size: 0.95rem;
+    margin: 0 auto;
+}
+
+#gallery h2 i {
+    font-size: 1.4em;
+    margin-bottom: 0.4rem;
+}
