@@ -39,7 +39,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
-
 }
 
 h1{
@@ -72,7 +71,7 @@ img {
 
 .checkout-container {
     max-width: 800px;
-    margin: 100px auto;
+    margin: 216px auto 100px auto;
     padding: 20px;
     font-family: sans-serif;
     color: var(--color-primario-azul);
@@ -136,4 +135,3 @@ img {
     font-weight: bold;
     color: var(--color-secundario);
 }
-

@@ -113,3 +113,33 @@ function changeOpacity() {
 }
 // 12, 22, 37 es el valor del color primario en rgb 
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    
+    if (newsletterForm) { 
+        newsletterForm.onsubmit = function(e) {
+            e.preventDefault();
+            
+            alert("¡Te damos la bienvenida al universo de Vincent!\n\nGracias por unirte a nuestra comunidad. Pronto recibirás historias, colores e inspiración directamente desde el museo para iluminar tu día a día.");
+            
+            this.reset();
+        };
+    }
+});
+
+function actualizarContadores() {
+
+    const carrito = JSON.parse(localStorage.getItem('miCarrito')) || [];
+
+    const contadores = document.querySelectorAll('.cuenta-carrito');
+
+    contadores.forEach(function(contador) {
+        contador.innerText = carrito.length;
+    });
+}
+
+window.addEventListener('load', actualizarContadores);
+
+document.addEventListener('DOMContentLoaded', actualizarContadores);
