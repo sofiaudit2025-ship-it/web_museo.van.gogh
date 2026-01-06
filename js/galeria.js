@@ -1,8 +1,19 @@
 // en vez de hacer la galeria con html dejo la estructura cruda ahi y el interior lo hago con js ya que va a ser dinámico
 
-// esta funcion llama a la api y obtiene un array de 187 items (187 porq filtrando en la api por que tuvieran imagenes y su autor fuera van gogh daba un total de 187)
+const IMGSPAGINA = 8;
+const SEARCHVANGOGH ='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh&hasImages=true'
+const SEARCHPORTRAIT='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+portrait&hasImages=true'
+const SEARCHLANDSCAPE='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+landscape&hasImages=true'
+const SEARCHFLOWERS='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+flowers&hasImages=true'
 
-const IMGSPAGINA = 30;
+// como algunos titulos son muy largos, a partir de 15 caracteres que ponga puntos suspensivos
+function truncarTexto(texto, maxLength = 15) {
+    if (texto.length > maxLength) {
+        return texto.slice(0, maxLength) + '...';
+    }
+    return texto;
+}
+
 function obtenerImagenesMET() {
     console.log("API")
     // llama a la página y obtiene el array
@@ -10,26 +21,8 @@ function obtenerImagenesMET() {
     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
         .then(res => res.json())
         .then(data => {
-            const ids = data.objectIDs;
-            console.log(ids)
-            // obtengo los detalles de cada uno de esos 30 objetos, que serán promesas y esas respuestas las paso a formato json
-            const promesas = ids.map(id => 
-                fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`)
-                    .then(res => res.json())
-            );
+            return data.objectIDs;
             
-            // hago que me devuelva esas promesas
-            return Promise.all(promesas);
-        })
-        // poner => es igual que hacer una funcion
-        .then(objetos => {
-            const filtrados = objetos.filter(objeto => objeto.artistDisplayName === "Vincent van Gogh");
-            // transformo los objetos al formato en el que quiero que se muestren
-            return filtrados.map((objeto, index) => ({
-                // como algunos tienen primaryImageSmall y otros primaryImage, pongo que se muestre una o la otra
-                url: objeto.primaryImageSmall || objeto.primaryImage,
-                texto: objeto.title || `Imagen ${index + 1}`
-            }));
         })
 
         .catch(error => {
@@ -39,35 +32,39 @@ function obtenerImagenesMET() {
         });
 }
 
-// function obtenerImagenesPICSUM(cantidad = 150) {
-//     const imagenes = [];
-//     for (let i = 1; i <= cantidad; i++) {
-//         const alto = Math.floor(Math.random() * (500 - 200) + 200);
-//         imagenes.push({
-//             url: `https://picsum.photos/300/${alto}?random=${i}`,
-//             descripcion: `Foto ${i}`
-//         });
-//     }
-//     console.log(imagenes);
-//     return imagenes;
-// }
-
 
 function rellenarGaleria(array, desde = 0) {
     console.log("rellenando la galeria")
     // antes de insertar nuevas imágenes limpiamos
     $("#gallery").empty();
+
+
     //el for recorre el array y va sumando 1 a la variable i hasta que sea igual a 30 que es el numero que quiero que se muestre en cada página (i++ es lo mismo que i=i+1) 
     for (let i = 0; i < IMGSPAGINA; i++) {
         let index = desde + i;
         if (index >= array.length) break;
         let objeto = array[index];
-        if (!objeto || !objeto.url) {
-            continue;
-        }
-        $("#gallery").append(`<img src="${objeto.url}" alt="${objeto.texto || ''}">`);
-        // TODO || scr hacer una imagen para cuando no cargue la de la api
 
+        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objeto}`).
+        then(res => res.json())
+        .then(data => {
+            console.log("data", data);
+            
+            $("#gallery").append(`
+                <figure class="info-obra">
+                    <img src="${data.primaryImageSmall || data.primaryImage || null}" alt="${data.title || 'N/A'}">
+                    <figcaption>
+                        <h3>${truncarTexto(data.title) || 'N/A'}</h3>
+                        <p>${data.objectEndDate || 'N/A'}</p>
+                    </figcaption>
+                </figure>
+            `);
+        // TODO || scr hacer una imagen para cuando no cargue la de la api
+        })
+        .catch(error => {
+            console.error('Error al obtener las imágenes del MET:', error);
+            $("#gallery").append(`<h2>Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
+        });
     }
 }
 
@@ -78,8 +75,15 @@ function rellenarGaleria(array, desde = 0) {
 $(document).ready(function() {
     obtenerImagenesMET().then(imagenes => {
         console.log("imagenes", imagenes.length);
+
+        // como la api del met a veces falla y no deja cargar los objetos, cuando falle hacer que salte un mensaje de error para que el usuario espere y recargue la página
+        if (imagenes.length === 0) {    
+            console.log("no hay imágenes");
+            $("#gallery").append(`<h2>Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
+            return;
+        }
         let indice = 0;
-        // crea los botones de paginación para mostrar hasta 30 fotos por página
+        // crea los botones de paginación para mostrar hasta 8 fotos por página
 
         // calculo el total de páginas dividiendo por el numero d imágenes que quiero por cada una
         const totalPaginas = Math.ceil(imagenes.length / IMGSPAGINA);
@@ -111,3 +115,9 @@ $(document).ready(function() {
         rellenarGaleria(imagenes, indice);
     });
 });
+
+
+
+// A veces la función obtenerImagenesMET si que funciona y recoge todos los ids, pero a la hora de ejecutar la función rellenarGaleria falla, por eso sale el indice pero no las imágenes. 
+// Otras veces directamente falla la funcion obtenerImagenesMET, por eso sale un unico mensaje de error
+// si alguna de estas falla, esperar y recargar
