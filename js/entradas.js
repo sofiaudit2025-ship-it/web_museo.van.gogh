@@ -18,6 +18,20 @@ function irAPaso(n) {
     
     
     document.getElementById('step-' + n).style.display = 'block';
+
+    function irAPaso(n) {
+    // Si el usuario intenta pasar del Paso 2 al Paso 3...
+    if (n === 3) {
+        let totalEntradas = ticketData.adulto + ticketData.estudiante + ticketData.gratis;
+        
+        // Si no ha seleccionado ninguna, le avisamos y frenamos
+        if (totalEntradas === 0) {
+            alert("Debes seleccionar al menos una entrada para continuar.");
+            return; 
+        }
+    }
+}
+
 }
 
 function cambiarCant(tipo, val) {
@@ -35,16 +49,7 @@ function finalizarCompra() {
     const nombre = document.getElementById('nombre-cliente').value.trim();
     const email = document.getElementById('email-cliente').value.trim();
 
-    if (!nombre || !email) {
-        alert("Por favor, rellena todos los campos.");
-        return;
-    }
-
-    // Validación básica de correo (que contenga @) como pide el estándar
-    if (!email.includes("@")) {
-        alert("Por favor, introduce un correo electrónico válido.");
-        return;
-    }
+  
 
     alert("¡Compra realizada con éxito! Recibirás tus entradas en " + email);
     cerrarModal();

@@ -232,13 +232,16 @@
                         </div>
 
 
+                    <form onsubmit="event.preventDefault(); irAPaso(2);">
                             <div class="grupo-input">
-                                <label>Fecha de la visita*</label>
-                                <input type="date" id="fecha-visita" class="input-modal">
+                                <label>Fecha de visita *</label>
+                                <input type="date" id="fecha-visita" class="input-modal" required>
                             </div>
+
                             <div class="grupo-input">
-                                <label>Hora de entrada*</label>
-                                <select id="hora-entrada" class="input-modal">
+                                <label>Hora de entrada *</label>
+                                <select id="hora-entrada" class="input-modal" required>
+                                    <option value="">Selecciona una hora</option>
                                     <option value="09:00">10:00 AM</option>
                                     <option value="10:30">10:30 AM</option>
                                     <option value="11:00">11:00 AM</option>
@@ -258,8 +261,10 @@
                                     <option value="19:00">19:00 PM</option>
                                 </select>
                             </div>
-                            <button class="boton-azul-continuar" onclick="irAPaso(2)">Siguiente</button>
-                        </div>
+
+                            <button type="submit" class="boton-azul-continuar">Siguiente</button>
+                        </form>
+                    </div>
 
                         <div class="modal-paso" id="step-2" style="display:none;">
                             <h2 class="titulo-mixto-modal">
@@ -312,7 +317,7 @@
                         </div>
 
                         <div class="modal-paso" id="step-3" style="display:none;">
-                            
+    
                             <h2 class="titulo-mixto-modal">
                                 <span class="manuscrito-blue">Información</span> de contacto
                             </h2>
@@ -337,23 +342,27 @@
                                 </div>
                             </div>
 
-                            <div class="grupo-input">
-                                <label>Nombre y Apellidos *</label>
-                                <input type="text" id="nombre-cliente" class="input-modal" placeholder="Nombre completo">
-                            </div>
+                            <form onsubmit="event.preventDefault(); finalizarCompra();">
+                                
+                                <div class="grupo-input">
+                                    <label>Nombre y Apellidos *</label>
+                                    <input type="text" id="nombre-cliente" class="input-modal" placeholder="Nombre completo" required>
+                                </div>
 
-                            <div class="grupo-input">
-                                <label>Correo electrónico *</label>
-                                <input type="email" id="email-cliente" class="input-modal" placeholder="ejemplo@correo.com">
-                            </div>
+                                <div class="grupo-input">
+                                    <label>Correo electrónico *</label>
+                                    <input type="email" id="email-cliente" class="input-modal" placeholder="ejemplo@correo.com" required>
+                                </div>
 
-                            <div class="aviso-legal-box">
-                                <p >
-                                    Tus datos se utilizarán únicamente para el envío de las entradas. Al finalizar, recibirás un PDF en tu correo electrónico.
-                                </p>
-                            </div>
+                                <div class="aviso-legal-box">
+                                    <p>
+                                        Tus datos se utilizarán únicamente para el envío de las entradas. Al finalizar, recibirás un PDF en tu correo electrónico.
+                                    </p>
+                                </div>
 
-                            <button class="boton-azul-continuar" onclick="finalizarCompra()">Finalizar Compra</button>
+                                <button type="submit" class="boton-azul-continuar">Finalizar Compra</button>
+                                
+                            </form>
                         </div>
                     </div>
                 </div>
