@@ -1,7 +1,7 @@
 // en vez de hacer la galeria con html dejo la estructura cruda ahi y el interior lo hago con js ya que va a ser dinámico
 
 const IMGSPAGINA = 8;
-const SEARCHVANGOGH ='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh&hasImages=true'
+const SEARCHVANGOGH ='https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&hasImages=true&q=Vicent+van+Gogh'
 const SEARCHPORTRAIT='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+portrait&hasImages=true'
 const SEARCHLANDSCAPE='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+landscape&hasImages=true'
 const SEARCHFLOWERS='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+flowers&hasImages=true'
@@ -17,10 +17,13 @@ function truncarTexto(texto, maxLength = 15) {
 function obtenerImagenesMET() {
     console.log("API")
     // llama a la página y obtiene el array
-    return fetch('https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh&hasImages=true')
+    return fetch(SEARCHVANGOGH)
     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
         .then(res => res.json())
         .then(data => {
+            if (data.objectIDs.length >70) {
+                data.objectIDs = data.objectIDs.slice(0,70)
+            }
             return data.objectIDs;
             
         })
@@ -121,3 +124,7 @@ $(document).ready(function() {
 // A veces la función obtenerImagenesMET si que funciona y recoge todos los ids, pero a la hora de ejecutar la función rellenarGaleria falla, por eso sale el indice pero no las imágenes. 
 // Otras veces directamente falla la funcion obtenerImagenesMET, por eso sale un unico mensaje de error
 // si alguna de estas falla, esperar y recargar
+
+
+
+// Ventana modal api

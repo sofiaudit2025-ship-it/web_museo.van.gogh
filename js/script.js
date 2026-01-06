@@ -88,11 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // funcion de cambiar la opacidad del fondo del menu
 function changeOpacity() {
-    console.log("changeOpacity");
+    //console.log("changeOpacity");
 
     // posicion del scroll en la que estoy
     var scroll = window.scrollY;
-    console.log("scroll: " + scroll);
+    //console.log("scroll: " + scroll);
 
     // posicion de scroll en la que el menu alcanza opacidad 1
     var menuBar = document.querySelector(".menu");
@@ -102,12 +102,12 @@ function changeOpacity() {
 
     // *1.5 para que tarde más en cambiar de opacidad 0 a 1
     var maxScroll = window.innerHeight;
-    console.log("max_scroll: " + maxScroll);
+    //console.log("max_scroll: " + maxScroll);
 
     if (scroll <= maxScroll) {
         // calculo del valor del alpha
         var opacity = scroll / maxScroll;
-        console.log("opacidad: " + opacity);
+        //console.log("opacidad: " + opacity);
         menuBar.style.backgroundColor = "rgba(12, 22, 37, " + opacity + ")";
     }
 }
