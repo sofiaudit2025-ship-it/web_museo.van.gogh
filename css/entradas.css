@@ -841,3 +841,97 @@ html{
     font-weight: bold;
     cursor: pointer;
 }
+
+@media (max-width: 1024px) {
+    /* Ajuste de los títulos gigantes del Hero */
+    .titulo-museo { font-size: 4rem; }
+    .titulo-artista { font-size: 7rem; }
+
+    /* Los bloques de información ocupan más ancho */
+    .info-item { max-width: 80%; }
+
+    /* Ajuste de la rejilla de servicios (de 3 a 2 columnas) */
+    .grid-servicios {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    /* Contenedor principal de horarios y tarifas */
+    .contenedor-visita {
+        flex-direction: column;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .bloque-horario, .bloque-tarifas {
+        width: 100%;
+        max-width: 600px;
+    }
+}
+
+/* --- RESPONSIVE MÓVIL (780px) --- */
+@media (max-width: 780px) {
+    /* 1. HERO Y TÍTULOS */
+    .hero { padding-top: 100px; }
+    .titulo-museo { font-size: 3rem; }
+    .titulo-artista { font-size: 5rem; margin-top: -10px; }
+    .tagline { letter-spacing: 0.4em; font-size: 0.8rem; }
+
+    /* 2. ESTADÍSTICAS Y CITAS */
+    .estadisticas {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+    .caja-numero { padding: 0; }
+    .cifra { font-size: 5rem; }
+    .cita-contenido p { font-size: 1.8rem; }
+    .manuscrito { font-size: 3rem; }
+
+    /* 3. MODAL DE ENTRADAS */
+    .modal-content-white {
+        width: 95%;
+        padding: 20px;
+    }
+    .titulo-mixto-modal { font-size: 1.3rem; }
+    .titulo-mixto-modal .manuscrito-blue { font-size: 2.5rem; }
+    
+    /* Ocultamos los textos de los pasos para que no se amontonen */
+    .paso-item p { display: none; }
+    .linea-pasos { margin-bottom: 20px; }
+
+    /* Las filas de selección de tickets se vuelven verticales */
+    .fila-selector {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* 4. PLANIFICA Y SERVICIOS */
+    .grid-servicios {
+        grid-template-columns: 1fr; /* Una sola columna */
+    }
+    .caja-servicio {
+        padding: 20px;
+    }
+
+    /* 5. CONTACTO Y MAPA */
+    .contenedor-contacto {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .info-contacto {
+        padding-left: 0;
+        text-align: center;
+    }
+    .mapa-contenedor {
+        width: 100%;
+        height: 300px;
+    }
+
+    /* Ajuste del scroll para que el título de Tarifas se vea bien */
+    #seccion-tarifas {
+        scroll-margin-top: 80px;
+    }
+}
