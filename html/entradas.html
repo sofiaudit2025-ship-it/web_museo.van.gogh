@@ -37,7 +37,7 @@
     
                     <!-- cuando lo de las entradas esté maquetado poner que vaya al id del apartado de las entradas y asi hace scroll automatico directamente ahi  -->
                     <div class="menu-btn-entradas">
-                        <a href="entradas.html">CONSIGUE TUS<br>ENTRADAS</a>
+                        <a href="#seccion-entradas">CONSIGUE TUS<br>ENTRADAS</a>
                     </div>
     
                     <button class="menu-icon" type="button" onclick="openMenu()" aria-label="Abrir menú">
@@ -118,9 +118,10 @@
                         </p>
                     </div>
                 </div>
+            </div>
         </section>
 
-        <section class="cita">
+        <div class="cita">
             <div class="cita-contenido">
                 <p>
                     <span class="manuscrito">"El arte</span> es para<br> 
@@ -128,9 +129,9 @@
                     <span class="manuscrito">destrozados</span> por la vida"
                 </p>
             </div>
-        </section>
+        </div>
 
-        <section class="estadisticas">
+        <div class="estadisticas">
             <div class="caja-numero">
                 <span class="cifra">+2M</span>
                 <span class="etiqueta">Visitantes anuales</span>
@@ -143,8 +144,8 @@
                 <span class="cifra">+50</span>
                 <span class="etiqueta">Años de historia</span>
             </div>
-        </section>
-        <section class="visita">
+        </div>
+        <section class="visita" id="seccion-entradas">
             <div class="contenedor-visita">
                 
                 <div class="bloque-horario">
@@ -174,7 +175,7 @@
                     </div>
                 </div>
 
-                <div class="bloque-tarifas">
+                <div class="bloque-tarifas" >
                     <div class="titulo-con-forma">
                         <h2>TARIFAS</h2>
                         <div class="pincelada"></div>
@@ -208,7 +209,7 @@
                         </div>
                     </div>
 
-                    <a href="javascript:void(0)" class="boton-dorado" onclick="abrirModal()">Compra tus entradas</a>
+                    <a href="javascript:void(0)" id="boton-comprar-seccion" class="boton-dorado" onclick="abrirModal()">Compra tus entradas</a>
                 </div>
 
                 <div id="modal-entradas" class="modal-overlay">

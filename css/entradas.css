@@ -51,7 +51,9 @@ video {
     vertical-align: middle;
 }
 
-
+html{
+    scroll-behavior: smooth;
+}
 
 
 /**
@@ -188,8 +190,7 @@ video {
 #menu > ul > li > a {
     display: inline-block;
     color: var(--color-secundario);
-    font-size: var(--tamano-texto-menu) *2;
-    
+    font-size: var(--tamano-texto-menu);  
 }
 
 #menu > ul > li:nth-child(4) {
