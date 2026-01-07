@@ -2,9 +2,7 @@
 
 const IMGSPAGINA = 8;
 const SEARCHVANGOGH ='https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&hasImages=true&q=Vicent+van+Gogh'
-const SEARCHPORTRAIT='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+portrait&hasImages=true'
-const SEARCHLANDSCAPE='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+landscape&hasImages=true'
-const SEARCHFLOWERS='https://collectionapi.metmuseum.org/public/collection/v1/search?q=artistDisplayName=Vincent%20van%20Gogh+flowers&hasImages=true'
+const SEARCHARTIC ="https://api.artic.edu/api/v1/artworks/search?query[term][artist_id]=40610&limit=100&fields=id,title,image_id,date_display,artist_display"
 
 // como algunos titulos son muy largos, a partir de 15 caracteres que ponga puntos suspensivos
 function truncarTexto(texto, maxLength = 15) {
@@ -14,69 +12,93 @@ function truncarTexto(texto, maxLength = 15) {
     return texto;
 }
 
-function obtenerImagenesMET() {
+function obtenerImagenesARTIC() {
     console.log("API")
     // llama a la página y obtiene el array
-    return fetch(SEARCHVANGOGH)
+    return fetch(SEARCHARTIC)
     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
         .then(res => res.json())
         .then(data => {
-            if (data.objectIDs.length >70) {
-                data.objectIDs = data.objectIDs.slice(0,70)
-            }
-            return data.objectIDs;
-            
+            console.log("ARTIC data", data.data);
+            return data.data;
         })
-
         .catch(error => {
-            console.error('Error al obtener las imágenes del MET:', error);
-            // En caso de error, devolver un array vacío o con imágenes por defecto
+            console.error('Error al obtener las imágenes del ARTIC:', error);
             return [];
         });
 }
 
-
-function rellenarGaleria(array, desde = 0) {
-    console.log("rellenando la galeria")
+function rellenarGaleriaARTIC(array, desde = 0) {
+    console.log("rellenando la galeria:",array)
     // antes de insertar nuevas imágenes limpiamos
     $("#gallery").empty();
-
-
-    //el for recorre el array y va sumando 1 a la variable i hasta que sea igual a 30 que es el numero que quiero que se muestre en cada página (i++ es lo mismo que i=i+1) 
-    for (let i = 0; i < IMGSPAGINA; i++) {
-        let index = desde + i;
-        if (index >= array.length) break;
-        let objeto = array[index];
-
-        fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objeto}`).
-        then(res => res.json())
-        .then(data => {
-            console.log("data", data);
-            
+    imagenes = array.slice(desde, desde + IMGSPAGINA);
+    imagenes.map(imagen => {
+            const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
             $("#gallery").append(`
                 <figure class="info-obra">
-                    <img src="${data.primaryImageSmall || data.primaryImage || null}" alt="${data.title || 'N/A'}">
-                    <figcaption>
-                        <h3>${truncarTexto(data.title) || 'N/A'}</h3>
-                        <p>${data.objectEndDate || 'N/A'}</p>
-                    </figcaption>
+                    <img src="${url}" alt="${imagen.title}">
                 </figure>
             `);
-        // TODO || scr hacer una imagen para cuando no cargue la de la api
-        })
-        .catch(error => {
-            console.error('Error al obtener las imágenes del MET:', error);
-            $("#gallery").append(`<h2><i class="fa-solid fa-triangle-exclamation"></i> Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
         });
-    }
 }
 
+// function obtenerImagenesMET() {
+//     console.log("API")
+//     // llama a la página y obtiene el array
+//     return fetch(SEARCHVANGOGH)
+//     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
+//         .then(res => res.json())
+//         .then(data => {
+//             if (data.objectIDs.length >70) {
+//                 data.objectIDs = data.objectIDs.slice(0,70)
+//             }
+//             return data.objectIDs;
+            
+//         })
+
+//         .catch(error => {
+//             console.error('Error al obtener las imágenes del MET:', error);
+//             // En caso de error, devolver un array vacío o con imágenes por defecto
+//             return [];
+//         });
+// }
+
+// function rellenarGaleria(array, desde = 0) {
+//     console.log("rellenando la galeria")
+//     $("#gallery").empty();
+//     for (let i = 0; i < IMGSPAGINA; i++) {
+//         let index = desde + i;
+//         if (index >= array.length) break;
+//         let objeto = array[index];
+
+//         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objeto}`).
+//         then(res => res.json())
+//         .then(data => {
+//             console.log("data", data);
+
+//             $("#gallery").append(`
+//                 <figure class="info-obra">
+//                     <img src="${data.primaryImageSmall || data.primaryImage || null}" alt="${data.title || 'N/A'}">
+//                     <figcaption>
+//                         <h3>${truncarTexto(data.title) || 'N/A'}</h3>
+//                         <p>${data.objectEndDate || 'N/A'}</p>
+//                     </figcaption>
+//                 </figure>
+//             `);
+//         })
+//         .catch(error => {
+//             console.error('Error al obtener las imágenes del MET:', error);
+//             $("#gallery").append(`<h2><i class="fa-solid fa-triangle-exclamation"></i> Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
+//         });
+//     }
+// }
 
 
 
-// cuando la página haya cargado llama a la funcion obtenerImagenesAPI
+
 $(document).ready(function() {
-    obtenerImagenesMET().then(imagenes => {
+    obtenerImagenesARTIC().then(imagenes => {
         console.log("imagenes", imagenes.length);
 
         // como la api del met a veces falla y no deja cargar los objetos, cuando falle hacer que salte un mensaje de error para que el usuario espere y recargue la página
@@ -115,7 +137,7 @@ $(document).ready(function() {
             });
             $paginacion.append($btn);
         }
-        rellenarGaleria(imagenes, indice);
+        rellenarGaleriaARTIC(imagenes, indice);
     });
 });
 
