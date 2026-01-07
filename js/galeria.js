@@ -1,5 +1,5 @@
 // en vez de hacer la galeria con html dejo la estructura cruda ahi y el interior lo hago con js ya que va a ser dinámico
-let imgModal=null
+
 const IMGSPAGINA = 8;
 const SEARCHARTIC ="https://api.artic.edu/api/v1/artworks/search?query[term][artist_id]=40610&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
 
@@ -37,14 +37,17 @@ function rellenarGaleriaARTIC(array, desde = 0) {
             const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
             imgModal = imagen
             $("#gallery").append(`
-                <figure class="info-obra" onclick="openModal(this,imgModal)">
+                <figure class="info-obra">
                     <img src="${url || null}" alt="${imagen.title || 'N/A'}">
                     <figcaption>
                         <h3>${truncarTexto(imagen.title) || 'N/A'}</h3>
                         <p>${imagen.date_display || 'N/A'}</p>
                     </figcaption>
                 </figure>
-            `);
+            `)
+            .on('click',function(event) {
+                openModal(imagen)
+            });
         });
 }
 
@@ -100,7 +103,7 @@ $(document).ready(function() {
 
 // abre la ventana modal
 // pongo un parametro (figura) que sera el figure sobre el que yo le he hecho clic, y más tarde trabajare con ese parametro figura
-function openModal(figura,img) {
+function openModal(img) {
     console.log("Funcion openModal:",img);
     // buscamos la ventana modal y la guardamos en una variable, ya que trabajaremos con ella
     var modal = document.getElementById("modal");
@@ -108,12 +111,8 @@ function openModal(figura,img) {
     modal.style.display = "flex";
 
     // con esto encuentra el valor del atributo src dentro del primer figure
-    var rutaImagen = figura.firstElementChild.getAttribute("src");
+    const rutaImagen = `https://www.artic.edu/iiif/2/${img.image_id}/full/843,/0/default.jpg`;
     console.log("Valor de la ruta de la imagen: " + rutaImagen);
-
-    // innerHTML pone todo el html que esté dentro de los elementos que has seleccionado previamente  
-    var pieImagen = '';
-    console.log("Pie de imagen: " + pieImagen);
 
 
     // OPCIÓN 1 PARA CALCULAR EL ATRIBUTO SRC DE LA IMAGEN DE LA VENTANA MODAL 
