@@ -1,8 +1,7 @@
 // en vez de hacer la galeria con html dejo la estructura cruda ahi y el interior lo hago con js ya que va a ser dinámico
-
+let imgModal=null
 const IMGSPAGINA = 8;
-const SEARCHVANGOGH ='https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&hasImages=true&q=Vicent+van+Gogh'
-const SEARCHARTIC ="https://api.artic.edu/api/v1/artworks/search?query[term][artist_id]=40610&limit=100&fields=id,title,image_id,date_display,artist_display"
+const SEARCHARTIC ="https://api.artic.edu/api/v1/artworks/search?query[term][artist_id]=40610&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
 
 // como algunos titulos son muy largos, a partir de 15 caracteres que ponga puntos suspensivos
 function truncarTexto(texto, maxLength = 15) {
@@ -33,10 +32,12 @@ function rellenarGaleriaARTIC(array, desde = 0) {
     // antes de insertar nuevas imágenes limpiamos
     $("#gallery").empty();
     imagenes = array.slice(desde, desde + IMGSPAGINA);
+    
     imagenes.map(imagen => {
             const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
+            imgModal = imagen
             $("#gallery").append(`
-                <figure class="info-obra" onclick="openModal(this)">
+                <figure class="info-obra" onclick="openModal(this,imgModal)">
                     <img src="${url || null}" alt="${imagen.title || 'N/A'}">
                     <figcaption>
                         <h3>${truncarTexto(imagen.title) || 'N/A'}</h3>
@@ -46,59 +47,6 @@ function rellenarGaleriaARTIC(array, desde = 0) {
             `);
         });
 }
-
-// function obtenerImagenesMET() {
-//     console.log("API")
-//     // llama a la página y obtiene el array
-//     return fetch(SEARCHVANGOGH)
-//     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
-//         .then(res => res.json())
-//         .then(data => {
-//             if (data.objectIDs.length >70) {
-//                 data.objectIDs = data.objectIDs.slice(0,70)
-//             }
-//             return data.objectIDs;
-            
-//         })
-
-//         .catch(error => {
-//             console.error('Error al obtener las imágenes del MET:', error);
-//             // En caso de error, devolver un array vacío o con imágenes por defecto
-//             return [];
-//         });
-// }
-
-// function rellenarGaleria(array, desde = 0) {
-//     console.log("rellenando la galeria")
-//     $("#gallery").empty();
-//     for (let i = 0; i < IMGSPAGINA; i++) {
-//         let index = desde + i;
-//         if (index >= array.length) break;
-//         let objeto = array[index];
-
-//         fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${objeto}`).
-//         then(res => res.json())
-//         .then(data => {
-//             console.log("data", data);
-
-//             $("#gallery").append(`
-//                 <figure class="info-obra">
-//                     <img src="${data.primaryImageSmall || data.primaryImage || null}" alt="${data.title || 'N/A'}">
-//                     <figcaption>
-//                         <h3>${truncarTexto(data.title) || 'N/A'}</h3>
-//                         <p>${data.objectEndDate || 'N/A'}</p>
-//                     </figcaption>
-//                 </figure>
-//             `);
-//         })
-//         .catch(error => {
-//             console.error('Error al obtener las imágenes del MET:', error);
-//             $("#gallery").append(`<h2><i class="fa-solid fa-triangle-exclamation"></i> Servidor sobrecargado. Por favor, inténtelo más tarde.</h2>`);
-//         });
-//     }
-// }
-
-
 
 
 $(document).ready(function() {
@@ -147,19 +95,13 @@ $(document).ready(function() {
 
 
 
-// A veces la función obtenerImagenesMET si que funciona y recoge todos los ids, pero a la hora de ejecutar la función rellenarGaleria falla, por eso sale el indice pero no las imágenes. 
-// Otras veces directamente falla la funcion obtenerImagenesMET, por eso sale un unico mensaje de error
-// si alguna de estas falla, esperar y recargar
-
-
-
 
 
 
 // abre la ventana modal
 // pongo un parametro (figura) que sera el figure sobre el que yo le he hecho clic, y más tarde trabajare con ese parametro figura
-function openModal(figura) {
-    console.log("Funcion openModal");
+function openModal(figura,img) {
+    console.log("Funcion openModal:",img);
     // buscamos la ventana modal y la guardamos en una variable, ya que trabajaremos con ella
     var modal = document.getElementById("modal");
     // tiene el display none asi que lo cambiamos a display flex, para que al darle a ese figure se abra esa ventana modal
@@ -170,7 +112,7 @@ function openModal(figura) {
     console.log("Valor de la ruta de la imagen: " + rutaImagen);
 
     // innerHTML pone todo el html que esté dentro de los elementos que has seleccionado previamente  
-    var pieImagen = figura.lastElementChild.innerHTML;
+    var pieImagen = '';
     console.log("Pie de imagen: " + pieImagen);
 
 
@@ -183,7 +125,15 @@ function openModal(figura) {
     // modal.firstElementChild.firstElementChild.setAttribute("src", rutaImagen)
 
     // cambiamos el valor del figcaption con la primera opción
-    modal.querySelector("figcaption").innerHTML = pieImagen;
+    modal.querySelector("figcaption").innerHTML = `
+        <p><h4>${img.title}<\h4><\p>
+    `;
+    modal.querySelector(".fechaAPI").innerHTML = `${img.date_display}`;
+    modal.querySelector(".autorAPI").innerHTML = `${img.artist_titles}`;
+    modal.querySelector(".dimensionAPI").innerHTML = `${img.dimensions}`;
+    modal.querySelector(".tecnicaAPI").innerHTML = `${img.medium_display}`;
+    modal.querySelector(".generoAPI").innerHTML = `${img.artwork_type_title}`;
+    
 }
 
 
