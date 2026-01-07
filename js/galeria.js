@@ -35,8 +35,8 @@ function rellenarGaleriaARTIC(array, desde = 0) {
     
     imagenes.map(imagen => {
             const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
-            imgModal = imagen
-            $("#gallery").append(`
+            
+            const $figure = $(`
                 <figure class="info-obra">
                     <img src="${url || null}" alt="${imagen.title || 'N/A'}">
                     <figcaption>
@@ -44,10 +44,13 @@ function rellenarGaleriaARTIC(array, desde = 0) {
                         <p>${imagen.date_display || 'N/A'}</p>
                     </figcaption>
                 </figure>
-            `)
-            .on('click',function(event) {
+            `);
+            $figure.on('click',function(event) {
                 openModal(imagen)
             });
+            
+            $("#gallery").append($figure)
+            
         });
 }
 
