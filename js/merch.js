@@ -49,7 +49,7 @@ const products = [
     price: 45.00,
     description: 'Bufanda de seda con estampado de Almendro en Flor.',
     image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:4ed428f7-022b-4599-a836-f77bfe23c507/685909-5.jpg?scaleType=1&width=2000&height=2000&color=ffffff',
-    large: true
+    large: false
   },
   {
     id: 'camiseta-girasoles',
@@ -149,7 +149,7 @@ const products = [
     price: 65.00,
     description: 'Cubierta de jarrón de papel, Los girasoles',
     image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:df37cc76-d850-4939-9974-3e72b3d7de79/vaas-697568.jpg?scaleType=1&width=2000&height=2000&color=ffffff',
-    large: true
+    large: false
   },
   {
     id: 'lienzo-noche',
