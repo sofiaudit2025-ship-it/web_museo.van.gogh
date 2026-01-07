@@ -76,8 +76,7 @@ body {
     justify-content: center;
     color: white;
     text-align: center;
-    margin-top: -50px;
-    height: 2099px;
+    height: 100vh;
      
 }
 
@@ -87,7 +86,7 @@ body {
     align-items: baseline;
     gap: 0.80rem;
     margin-bottom: -1.1rem; 
-    z-index: 50;
+    z-index: 2;
 }
 
 .script{
@@ -279,10 +278,7 @@ body {
 
 @media (max-width: 768px){
 
-  .container{
-     transform: translateY(-1799px);
-     
-   }
+  
 
    .script{
      font-size: 4.5rem;
