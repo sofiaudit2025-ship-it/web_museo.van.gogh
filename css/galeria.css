@@ -272,7 +272,7 @@ body {
 .modal-card {
     background: var(--color-secundario);
     width: 90%;
-    max-width: 760px;
+    max-width: 860px;
     padding: 40px;
     position: relative;
     font-family: var(--font-secondary);
@@ -307,11 +307,12 @@ body {
 
 .modal-title {
     font-family: var(--font-secondary);
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     color: var(--color-primario);
     display: flex;
     text-align: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .modal-figure {
@@ -336,4 +337,8 @@ body {
     align-items: flex-end;
     justify-content: space-around;
     margin-top: auto;
+}
+
+.modal-datos-item {
+    font-size: 0.9rem;
 }
