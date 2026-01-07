@@ -37,7 +37,11 @@ function rellenarGaleriaARTIC(array, desde = 0) {
             const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
             $("#gallery").append(`
                 <figure class="info-obra">
-                    <img src="${url}" alt="${imagen.title}">
+                    <img src="${url || null}" alt="${imagen.title || 'N/A'}">
+                    <figcaption>
+                        <h3>${truncarTexto(imagen.title) || 'N/A'}</h3>
+                        <p>${imagen.date_display || 'N/A'}</p>
+                    </figcaption>
                 </figure>
             `);
         });
@@ -129,7 +133,7 @@ $(document).ready(function() {
             $btn.on('click', function() {
                 indice = (p - 1) * IMGSPAGINA;
                 console.log("indice", indice);
-                rellenarGaleria(imagenes, indice);
+                rellenarGaleriaARTIC(imagenes, indice);
 
                 // Marcar botón activo
                 $(".btn-pagina").removeClass('activo');
