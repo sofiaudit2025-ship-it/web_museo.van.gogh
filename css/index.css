@@ -124,10 +124,9 @@ body {
    letter-spacing: .5px;
    transition: background .2s, transform .15s;
 }
-
-.hero-btn:hover{
-  background: #f5c241;
-  transform: translateY(-2px);
+.hero-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
 }
 
 /* FOTO Y DEGRADADO */
@@ -266,9 +265,9 @@ body {
 }
 
 .btn:hover {
-  background-color: #ffd166;
+  opacity: 0.9;
+  box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
 }
-
 
 /* RESPONSIVE */
 
