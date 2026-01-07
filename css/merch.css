@@ -75,7 +75,6 @@ img {
   font-family: var(--font-secondary);
   font-size: 1rem;
   padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -292,7 +291,6 @@ img {
 
 .product-card {
   background-color: var(--color-primario);
-  border-radius: 0.5rem;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;

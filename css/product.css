@@ -76,7 +76,6 @@ img {
   font-family: var(--font-secondary);
   font-size: 1rem;
   padding: 1rem 1.5rem;
-  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -88,7 +87,6 @@ img {
 
 .btn-outline-gold{
     border: 2px solid var(--color-destacados);
-    border-radius: 10px;
     color: var(--color-destacados);
     transition: 0.3s ease;
 }
@@ -136,7 +134,6 @@ img {
 
 .product-image-large {
   aspect-ratio: 1;
-  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -153,7 +150,6 @@ img {
 
 .product-image{
 aspect-ratio: 1;
-border-radius: 10px;
 overflow: hidden;
 }
 

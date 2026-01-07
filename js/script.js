@@ -116,15 +116,23 @@ function changeOpacity() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterForm = document.querySelector('.newsletter-form');
     
     if (newsletterForm) { 
         newsletterForm.onsubmit = function(e) {
             e.preventDefault();
             
-            alert("¡Te damos la bienvenida al universo de Vincent!\n\nGracias por unirte a nuestra comunidad. Pronto recibirás historias, colores e inspiración directamente desde el museo para iluminar tu día a día.");
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
             
-            this.reset();
+            if (emailInput && emailInput.value.trim() !== '') {
+                alert("¡Te damos la bienvenida al universo de Vincent!\n\nGracias por unirte a nuestra comunidad. Pronto recibirás historias, colores e inspiración directamente desde el museo para iluminar tu día a día.");
+                this.reset();
+            } else {
+                alert("Por favor, introduce tu correo electrónico para suscribirte.");
+                if(emailInput) {
+                    emailInput.focus();
+                }
+            }
         };
     }
 });
