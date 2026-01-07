@@ -36,7 +36,7 @@ function rellenarGaleriaARTIC(array, desde = 0) {
     imagenes.map(imagen => {
             const url = `https://www.artic.edu/iiif/2/${imagen.image_id}/full/843,/0/default.jpg`;
             $("#gallery").append(`
-                <figure class="info-obra">
+                <figure class="info-obra" onclick="openModal(this)">
                     <img src="${url || null}" alt="${imagen.title || 'N/A'}">
                     <figcaption>
                         <h3>${truncarTexto(imagen.title) || 'N/A'}</h3>
@@ -153,4 +153,42 @@ $(document).ready(function() {
 
 
 
-// Ventana modal api
+
+
+
+// abre la ventana modal
+// pongo un parametro (figura) que sera el figure sobre el que yo le he hecho clic, y más tarde trabajare con ese parametro figura
+function openModal(figura) {
+    console.log("Funcion openModal");
+    // buscamos la ventana modal y la guardamos en una variable, ya que trabajaremos con ella
+    var modal = document.getElementById("modal");
+    // tiene el display none asi que lo cambiamos a display flex, para que al darle a ese figure se abra esa ventana modal
+    modal.style.display = "flex";
+
+    // con esto encuentra el valor del atributo src dentro del primer figure
+    var rutaImagen = figura.firstElementChild.getAttribute("src");
+    console.log("Valor de la ruta de la imagen: " + rutaImagen);
+
+    // innerHTML pone todo el html que esté dentro de los elementos que has seleccionado previamente  
+    var pieImagen = figura.lastElementChild.innerHTML;
+    console.log("Pie de imagen: " + pieImagen);
+
+
+    // OPCIÓN 1 PARA CALCULAR EL ATRIBUTO SRC DE LA IMAGEN DE LA VENTANA MODAL 
+    // esto busca el primer img que encuentre dentro de cualquier hijo dentro de esa ventana modal
+    modal.querySelector("img").src = rutaImagen;
+
+
+    // OPCIÓN 2 PARA CAMBIAR EL ATRIBUTO: MOVERNOS POR LOS HIJOS
+    // modal.firstElementChild.firstElementChild.setAttribute("src", rutaImagen)
+
+    // cambiamos el valor del figcaption con la primera opción
+    modal.querySelector("figcaption").innerHTML = pieImagen;
+}
+
+
+// cerramos la ventana modal al darle clic a la x
+function closeModal() {
+    console.log("Funcion closeModal");
+    modal.style.display = "none";
+}
