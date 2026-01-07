@@ -103,6 +103,10 @@ video {
     justify-self: center;
 }
 
+.menu-links a:hover {
+  color: var(--color-destacados);
+}
+
 .menu-cta {
     position: relative;
     padding: var(--margenes-texto);
@@ -129,6 +133,11 @@ video {
     width: var(--menu-side-width);
     display: flex;
     justify-content: flex-end;
+}
+
+.menu-btn-entradas:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
 }
 
 .menu-btn-entradas a {
@@ -190,6 +199,7 @@ video {
     color: var(--color-secundario);
     font-size: var(--tamano-texto-menu) *2;
 }
+
 
 #menu > ul > li > div{
   letter-spacing: 0;
