@@ -75,9 +75,9 @@ body {
     gap: 0.3rem;
     color: white;
     text-align: center;
-    transform: translateY(-2000px);
     margin-top: -50px;
-    
+    height: 2099px;
+     
 }
 
 .line{
@@ -85,7 +85,7 @@ body {
     align-items: baseline;
     gap: 0.80rem;
     margin-bottom: -1.9rem; 
-   
+    z-index: 50;
 }
 
 .script{
