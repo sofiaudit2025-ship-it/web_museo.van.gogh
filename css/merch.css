@@ -82,7 +82,7 @@ img {
 
 .btn-gold:hover {
   opacity: 0.9;
-  box-shadow: 0 4px 20px hsla(42, 76%, 55%, 0.3);
+  box-shadow: 0 4px 20px rgba(255, 212, 40, 0.3);
 }
 
 .hero {

@@ -405,6 +405,11 @@ ul {
   transition: all 0.3s ease;
 }
 
+.btn-gold:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 20px rgba(255, 212, 40, 0.3);
+}
+
 .social-links {
   display: flex;
   gap: 1rem;
