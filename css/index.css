@@ -81,10 +81,11 @@ body {
 }
 
 .line{
+    
     display: flex;
     align-items: baseline;
     gap: 0.80rem;
-    margin-bottom: -1.9rem; 
+    margin-bottom: -6rem; 
     z-index: 50;
 }
 
