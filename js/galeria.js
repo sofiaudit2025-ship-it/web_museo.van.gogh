@@ -144,3 +144,12 @@ function closeModal() {
     console.log("Funcion closeModal");
     modal.style.display = "none";
 }
+
+
+
+
+// FILTRO
+
+
+
+

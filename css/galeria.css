@@ -5,7 +5,7 @@
     --color-primario: #0C1625;
     --color-secundario: #FFFFFF;
     --color-terciario: #000000;
-    --color-destacados: #D5A022;
+    --color-destacados: rgb(213, 160, 34);
     --font-primary: "Italianno", cursive;
     --font-primary-weight: 400;
     --font-secondary: "Helvetica", sans-serif;
@@ -36,14 +36,15 @@ body {
 /**
 /* INTRO GALERÍA */
 .IntroGaleria {
-    min-height: 100vh;
+    height: 80vh;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: clamp(5rem, 14vh, 8rem) clamp(1.5rem, 8vw, 6rem) clamp(3rem, 10vh, 6rem);
     background-image: var(--degradado), url("media/img/HeroIntroGaleria.webp");
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     color: var(--color-secundario);
 }
@@ -380,4 +381,20 @@ body {
         margin-top: 0;
         gap: 16px;
     }
+}
+
+
+
+/**
+/* BOTONERA */
+.botonera {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2.4rem);
+}
+
+.botonera > button {
+    font-size: var(--tamano-texto-menu);
+    color: var(--color-secundario);
 }
