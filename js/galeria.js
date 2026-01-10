@@ -1,7 +1,12 @@
 // en vez de hacer la galeria con html dejo la estructura cruda ahi y el interior lo hago con js ya que va a ser dinámico
-
+var Filtro = ""
 const IMGSPAGINA = 8;
 const SEARCHARTIC ="https://api.artic.edu/api/v1/artworks/search?query[term][artist_id]=40610&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
+
+const FILTROPORTRAITS ="https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][term][artist_id]=40610&query[bool][must][1][match][term_titles]=stumping woman men people portrait&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
+const FILTROEXTERIOR ="https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][term][artist_id]=40610&query[bool][must][1][match][term_titles]=charcoal cardboard trees clouds foliage water terrace landscape&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
+const FILTROCOLOR ="https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][term][artist_id]=40610&query[bool][must][1][match][term_titles]=portraits fruit watercolor green blue trees clouds foliage water terrace landscape&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
+const FILTROBN ="https://api.artic.edu/api/v1/artworks/search?query[bool][must][0][term][artist_id]=40610&query[bool][must][1][match][term_titles]=charcoal laid etching chalk paper cardboard pen ink black brown&limit=100&fields=artist_titles,title,date_display,description,dimensions,medium_display,artwork_type_title,image_id"
 
 // como algunos titulos son muy largos, a partir de 15 caracteres que ponga puntos suspensivos
 function truncarTexto(texto, maxLength = 15) {
@@ -11,10 +16,10 @@ function truncarTexto(texto, maxLength = 15) {
     return texto;
 }
 
-function obtenerImagenesARTIC() {
+function obtenerImagenesARTIC(filtro = SEARCHARTIC) {
     console.log("API")
     // llama a la página y obtiene el array
-    return fetch(SEARCHARTIC)
+    return fetch(filtro)
     // esa respuesta que ha obtenido, la transforma a formato json y eso que de será data
         .then(res => res.json())
         .then(data => {
@@ -54,9 +59,8 @@ function rellenarGaleriaARTIC(array, desde = 0) {
         });
 }
 
-
-$(document).ready(function() {
-    obtenerImagenesARTIC().then(imagenes => {
+function galeria(filtro=SEARCHARTIC) {
+    obtenerImagenesARTIC(filtro).then(imagenes => {
         console.log("imagenes", imagenes.length);
 
         // como la api del met a veces falla y no deja cargar los objetos, cuando falle hacer que salte un mensaje de error para que el usuario espere y recargue la página
@@ -97,7 +101,8 @@ $(document).ready(function() {
         }
         rellenarGaleriaARTIC(imagenes, indice);
     });
-});
+}
+$(document).ready(galeria());
 
 
 
@@ -150,6 +155,31 @@ function closeModal() {
 
 // FILTRO
 
+function filtro(f) {
 
+    var busqueda =""
+    switch(f) {
+        case "todos":
+            busqueda = SEARCHARTIC;
+            break;
+        case "retratos":
+            busqueda = FILTROPORTRAITS;
+            break;
+        case "interior":
+            busqueda = FILTROINTERIOR;
+            break;
+        case "exterior":
+            busqueda = FILTROEXTERIOR;
+            break;
+        case "color":
+            busqueda = FILTROCOLOR;
+            break;
+        case "bn":
+            busqueda = FILTROBN;
+        
+            
+    }
+    galeria(busqueda);
+}
 
 
