@@ -417,17 +417,17 @@ body {
 
 
 
-.item.galeria::before {
-  background-image: url('../css/media/img/lanocheestrellada.webp');
+.item.galeria:hover {
+  cursor: url('../css/media/img/lanocheestrellada.webp');
 }
 
-.item.visita::before {
-  background-image: url('ruta/a/tu-imagen-visita.jpg');
+.item.visita:hover {
+  cursor: url('../css/media/img/planificatuvisita.webp');
 }
-.item.tienda::before {
-  background-image: url('ruta/a/tu-imagen-tienda.jpg');
+.item.tienda:hover {
+  cursor: url('../css/media/img/tienda.jpg');
 }
-.item:hover::before {
+.item:hover:hover {
   opacity: 1;
 }
 
