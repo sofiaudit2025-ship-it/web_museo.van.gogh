@@ -402,3 +402,22 @@ body {
 .botonera > button.activo {
     color: var(--color-destacados);
 }
+
+@media (max-width: 450px) {
+    .botonera {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem 1rem;
+        padding: 0 1rem;
+    }
+
+    .botonera > button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 270px) {
+    .botonera {
+        grid-template-columns: 1fr;
+    }
+}
