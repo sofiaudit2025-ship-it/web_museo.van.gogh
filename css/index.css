@@ -195,7 +195,7 @@ body {
   z-index: 2;
 }
 
-.arrow {
+.gallery-arrow{
   background: #D5A022;
   border: none;
   width: 44px;
@@ -206,11 +206,11 @@ body {
   position: absolute;
 }
 
-.arrow.left {
+.gallery-arrow.left {
   left:300px;
 }
 
-.arrow.right {
+.gallery-arrow.right {
   right: 300px;
 }
 
@@ -266,12 +266,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
   cursor: pointer;
-  position: relative;
-  font-size: 1rem;
-  color: #fff;
+  padding: 20px 0;
 }
+
+.datos-question .arrow {
+  width: 14px;
+  height: 14px;
+  border-right: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+ transform: rotate(0deg);
+  transition: transform 0.3s ease;
+  margin-left: 20px; /* espacio normal, no 600px */
+}
+
 .datos-question span:first-child {
   flex: 1;
 }
@@ -280,35 +288,26 @@ body {
   background-color: #D5A022;
 }
 
-.arrow {
-  width: 18px;
-  height: 18px;
-  display: inline-block;
-
-   /* flecha */
-  
-  margin-left: 600px; 
-  border-right: 3px solid white;
-  border-bottom: 3px solid white;
-  transform: rotate(-45deg);
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-
-  transition: transform 0.3s ease;
+.datos-question.active .arrow {
+  transform: rotate(-135deg);
 }
-
 
 
 .datos-answer {
    max-height: 0;
    overflow: hidden;
    transition: max-height 0.3s ease;
-   padding: 0 0;
+   padding: 0 4px;
    font-size: 0.80rem;
    color: #ffffff;
    font-family: var(--font-secondary);
 } 
+
+.datos-question.active + .datos-answer {
+  padding: 20px 4px 30px; 
+  max-height: 500px;      
+}
+
 
 
 /* SECCION5(EXPLORA) */
@@ -410,7 +409,7 @@ body {
 .item-galeria {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* esto centra verticalmente la flecha */
+  align-items: center; 
 }
 
 
@@ -431,4 +430,152 @@ body {
 .item:hover::before {
   opacity: 1;
 }
+
+
+/* RESPONSIVE */
+
+
+
+/* VIDEO */
+/* Móviles */
+@media (max-width: 600px) {
+  .video-section {
+    height: 50vh;
+  }
+
+  .video-section video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* FOTO */
+
+/* Móviles */
+@media (max-width: 600px) {
+  .image-section {
+    height: 50vh;
+  }
+}
+
+
+/* CARRUSSEL */
+
+@media (max-width: 600px) {
+  .gallery h2 {
+    font-size: 2.8rem;
+  }
+
+    .track {
+    width: 320px;
+    height: 220px;
+  }
+
+  .track img {
+    width: 110px;
+    height: 150px;
+  }
+
+  .track img.active {
+    width: 160px;
+    height: 210px;
+  }
+
+  .gallery-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .gallery-arrow.left {
+    left: 30px;
+  }
+
+  .gallery-arrow.right {
+    right: 20px;
+  }
+}
+
+/* DATOS CURIOSOS */
+
+@media (max-width: 600px) {
+  .Datos-container {
+    padding: 0 30px;
+  }
+
+  .title-a,
+  .title-b {
+    font-size: 2.8rem;
+  }
+
+  .datos-question {
+    padding: 14px 0;
+  }
+
+  .datos-question span:first-child {
+    font-size: 1rem;
+  }
+
+  .datos-question .arrow {
+    width: 10px;
+    height: 10px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    margin-left: 12px;
+  }
+
+  .datos-answer {
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+}
+
+/* EXPLORA EL MUSEO */
+
+
+@media (max-width: 600px) {
+  .explora {
+    padding: 40px 25px;
+    margin-top: 60px;
+  }
+
+  .explora h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .explora h1 span {
+    font-size: 3rem;
+    margin-top: -25px;
+  }
+
+  .secciones {
+    gap: 20px;
+  }
+
+  .item-galeria {
+    padding: 18px 0;
+  }
+
+  .item-galeria h2 {
+    font-size: 1.4rem;
+  }
+
+  .item-galeria p {
+    font-size: 0.85rem;
+  }
+
+  .secciones-arrow {
+    width: 14px;
+    height: 14px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+  }
+}
+
+
+
+
 
