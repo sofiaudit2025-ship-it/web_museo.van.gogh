@@ -134,7 +134,7 @@ body {
 .gallery h2 {
   font-size: 5rem;
   margin-bottom: 60px;
-  line-height: 1.2;
+  line-height: 0.8;
 }
 
 .highlight {
@@ -144,7 +144,8 @@ body {
 
 .script {
   font-family: var(--font-primary);
-  font-style: italic;
+  font-size: 5rem;
+  font-weight: 400;
   color: #FFFFFF;
 }
 
@@ -228,16 +229,17 @@ body {
 
 /* SECCION4(CURIOSIDADES) */
 .Datos-container {
-  max-width: 700px;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 0 20px;
+  
 }
 
 .datos-title {
   display: flex;
   gap: 10px;
   align-items: baseline;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 20px;
 }
 
@@ -277,7 +279,7 @@ body {
   border-bottom: 3px solid #ffffff;
  transform: rotate(0deg);
   transition: transform 0.3s ease;
-  margin-left: 20px; /* espacio normal, no 600px */
+  margin-left: 20px; 
 }
 
 .datos-question span:first-child {
@@ -333,12 +335,12 @@ body {
 }
 
 .explora h1 span {
-  font-family: serif;
+  font-family: var(--font-primary);
   color: #d4a017;
-  font-style: italic;
   display: block;
-  font-size: 5rem;
-   margin-top: -50px;
+  font-size: 9rem;
+  margin-top: -90px;
+  font-weight: 400;
 
 }
 
