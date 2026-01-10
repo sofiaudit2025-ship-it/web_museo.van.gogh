@@ -74,100 +74,151 @@
         
 
 
-            <div class="container">
-                <div class="line">
-                    <span class="script">El</span>
-                    <span class="bold">MUNDO</span>
-                </div>  
+           
 
-                <div class="line">
-                    <span class="script">y</span>
-                    <span class="bold">PINTURAS</span>
+
+        <!-- SECCIÓN 1 -->
+        <section class="hero">
+            <h1>Vincent van Gogh</h1>
+            <a href="entradas.html" class="hero-btn">CONSIGUE TUS ENTRADAS</a>
+        </section>
+
+        <!-- SECCIÓN 2 (VIDEO) -->
+        <section class="video-section">
+            <video autoplay muted loop playsinline>
+                <source src="../css/media/img/videohome" type="video/mp4">
+            </video>
+        </section>
+
+        <!-- SECCIÓN 3 (FOTO) -->
+        <section class="image-section">
+            <img src="../css/media/img/FOTOMUSEO1.jpg" alt="Galería de arte">
+        </section>
+
+        <!-- SECCION4 (CONOCE MÁS A VAN GOGH) -->
+
+        <section class="gallery">
+            <h2>
+                <span class="highlight">Conoce</span>
+                <span class="script">más</span><br>
+                <span class="highlight">a</span>
+                <span class="script">Van Gogh</span>
+            </h2>
+
+            <div class="coverflow">
+                <button class="arrow left">&#8249;</button>
+
+                <div class="track">
+                    <img src="../css/media/img/indexretrato.webp" class="active">
+                    <img src="../css/media/img/fotoretrato.jpg">
+                    <img src="../css/media/img/foto2curiosidades.jpg">
+                    <img src="../css/media/img/lanocheestrellada.webp">
+                    <img src="../css/media/img/París siglo XIX.png">
+                    <img src="../css/media/img/Cartas a Theo.jpg">
+                    <img src="../css/media/img/vistadesdeestudio.jpg">
                 </div>
 
-                <div class="line">
-                    <span class="script">de</span>
-                    <div class="name">
-                        <span class="bold">VINCENT</span>
-                        <span class="bold last-name">VAN GOGH</span>
-                    </div>
-                </div>
-                <a href="entradas.html" class="hero-btn">CONSIGUE TUS ENTRADAS</a>
-
+                <button class="arrow right">&#8250;</button>
             </div>
+             <button class="cta">Ver todo</button>
 
-            
+        </section>
 
-            <!-- <div class="btn-entradas">
-               <a href="entradas.html">CONSIGUE TUS<br>ENTRADAS</a>
-            </div> -->
+        <!-- SECCION4(DATOS CURIOSOS) -->
 
-            <!-- BIOGRAFÍA -->
-            <section class="biografia">
-                <div class="overlay"></div>
-                <p class="texto t1">
-                 Vincent Van Gogh (1853-1890) fue un pintor postimpresionista neerlandés, conocido por sus obras llenas de emoción y color.
-                </p>
+        <div class="Datos-container">
+             <div class="datos">
+                <div class="datos-title">
+                    <span class="title-a">Datos</span>
+                    <span class="title-b">Curiosos</span>
+                </div>
 
-                <p class="texto t2">
-                 Durante su vida, Van Gogh creó más de 2,100 obras de arte, incluyendo alrededor de 860 pinturas al óleo.
-                </p>
-                
-                <p class="texto t3">
-                    Sus trabajos más famosos incluyen "La noche estrellada", "Los girasoles" y "El dormitorio en Arlés".
-                </p>
-
-                <p class="texto t4">
-                 Van Gogh luchó con problemas de salud mental durante toda su vida, lo que influyó profundamente en su arte.
-                </p>
-
-                <p class="texto t5">    
-                 Hoy en día, es considerado uno de los artistas más influyentes de la historia del arte occidental.
-                </p>
-            </section>
-
-
-            <!-- SECCION EXPLORA -->
-            <section class="explora">
-             <h2>Explora el universo Van Gogh</h2>
-             <p>Planifica tu visita, recorre nuestra galería o llévate un recuerdo único. </p>
-
-                <div class="cards">
-                    <div class="card">
-                        <img src="../css/media/img/lanocheestrellada.webp" alt="Vida de Van Gogh">
-
-                        <div class="card-content">
-                        <h3>La Galería</h3>
-                        <p>Explora nuestra gran colección de obras maestras.</p>
-                        <a href="galeria.html" class="btn">EXPLORAR OBRAS</a>
+                <div class="datos-item">
+                    <div class="datos-question" onclick="toggleFaq(this)">
+                     <span>¿Quién fue Vincent van Gogh?</span>
+                     <span class="arrow"></span>
+                    </div>
+                    <div class="datos-answer">
+                        Vincent van Gogh (1853–1890) fue un pintor postimpresionista holandés, considerado uno de los artistas más influyentes de la historia del arte. Aunque en vida fue casi desconocido y vendió muy pocas obras, su estilo único, caracterizado por colores vibrantes y pinceladas expresivas, revolucionó la pintura. Van Gogh estudió arte formalmente y trabajó inicialmente como comerciante de arte y maestro, pero finalmente se dedicó por completo a la pintura. Sus temas preferidos incluían paisajes, retratos y naturalezas muertas, a menudo reflejando su intensa vida emocional y su conexión con la naturaleza. Hoy en día, sus obras se exhiben en los museos más importantes del mundo y son admiradas por su fuerza emocional y técnica innovadora.
                     </div>
                 </div>
 
-                <div class="card">
-                    <img src="../css/media/img/planificatuvisita.webp" alt="Obras de Van Gogh">
+                <div class="datos-item">
+                    <div class="datos-question" onclick="toggleFaq(this)">
+                     <span>¿Cuántas obras pintó Van Gogh?</span>
+                     <span class="arrow"></span>
+                    </div>
+                    <div class="datos-answer">
+                     Se estima que Van Gogh pintó más de 2,100 obras durante su vida, de las cuales unas 860 fueron cuadros al óleo y el resto dibujos y bocetos. La mayor parte de su producción artística se concentró en los últimos 10 años de su vida, cuando vivió en ciudades como París, Arles y Saint-Rémy. A pesar de la corta duración de su carrera, Van Gogh desarrolló un estilo muy distintivo y experimentó con el color, la luz y la textura de formas innovadoras para la época, creando un legado artístico que ha influido a innumerables pintores posteriores.                   
+                   </div>
+                </div>
 
-                    <div class="card-content">
-                        <h3>Planifica tu visita</h3>
-                        <p>Horarios, precios, exposiciones temporales y cómo llegar al museo.</p>
-                        <a href="entradas.html" class="btn">VER HORARIOS</a>
+                <div class="datos-item">
+                    <div class="datos-question" onclick="toggleFaq(this)">
+                     <span>¿Qué le pasó en la oreja?</span>
+                     <span class="arrow"></span>
+                    </div>
+                    <div class="datos-answer">
+                     En diciembre de 1888, durante un período de profunda angustia emocional y crisis mental, Van Gogh tuvo un altercado con su amigo y también pintor Paul Gauguin. Tras una fuerte discusión, Van Gogh sufrió un colapso emocional y se cortó parte de su oreja izquierda. Este incidente es uno de los episodios más conocidos de su vida y refleja los problemas de salud mental que lo acompañaron durante años. Tras el incidente, Van Gogh pasó tiempo en hospitales y asilos, donde continuó pintando y explorando nuevas técnicas y estilos artísticos.                   
                     </div>
                 </div>
 
-                <div class="card">
-                    <img src="../css/media/img/tienda.jpg" alt="Legado de Van Gogh">
-
-                    <div class="card-content">
-                     <h3>Tienda del museo</h3>
-                     <p>Lleva el arte a casa. Réplicas, libros y artículos exclusivos.</p>
-                     <a href="merch.html" class="btn">IR A LA TIENDA</a>
-
+                <div class="datos-item">
+                    <div class="datos-question" onclick="toggleFaq(this)">
+                     <span>¿De qué murió?</span>
+                     <span class="arrow"></span>
                     </div>
-                    
-                   
+                    <div class="datos-answer">
+                        Van Gogh murió el 29 de julio de 1890, a la edad de 37 años, debido a una herida de bala autoinfligida, considerada generalmente un suicidio. Tras dispararse en el pecho mientras se encontraba en Auvers-sur-Oise, sobrevivió por dos días, atendido por médicos, hasta su fallecimiento. Su muerte fue el trágico final de una vida marcada por problemas mentales y sociales, así como por la falta de reconocimiento en vida. Aunque sufrió mucho en vida, hoy se le reconoce como uno de los genios del arte mundial.                    
+                    </div>
                 </div>
-            </section>
+
+                 <div class="datos-item">
+                    <div class="datos-question" onclick="toggleFaq(this)">
+                     <span>¿Por qué sus cuadros tienen tanta textura?</span>
+                     <span class="arrow"></span>
+                    </div>
+                    <div class="datos-answer">
+                     Van Gogh desarrolló un estilo muy característico llamado pintura con empaste, que consiste en aplicar la pintura al óleo en capas gruesas directamente sobre el lienzo, creando relieves visibles. Esta técnica le permitía transmitir emociones, movimiento y dinamismo de manera muy directa. Cada pincelada se sentía viva y reflejaba su estado de ánimo, la intensidad de los colores y la energía de la escena representada. Además, su manera de trabajar el color —mezclando tonos complementarios y aplicando trazos en espiral o enérgicos— daba a sus cuadros una sensación de textura, profundidad y vitalidad que los hace inconfundibles incluso hoy.                   
+                    </div>
+                </div>
+            </div>
+        </div>
 
         
+
+        <!-- SECCIÓN 5 (SECCIONES) -->
+
+        <section class="explora">
+            <h1>Explora el <span>museo</span></h1>
+
+            <div class="secciones">
+
+                <a href="galeria.html" class="item-galeria">
+                    <div>
+                        <h2>La Galería</h2>
+                        <p>Explora nuestra gran colección de obras maestras</p>
+                    </div>
+                    <span class="secciones-arrow"></span>
+                </a>
+
+                <a href="entradas.html" class="item-galeria">
+                    <div>
+                        <h2>Planifica tu visita</h2>
+                        <p>Horarios, precios y cómo llegar al museo</p>
+                    </div>
+                     <span class="secciones-arrow"></span>
+                </a>
+
+                <a href="merch.html" class="item-galeria">
+                    <div>
+                        <h2>Tienda del museo</h2>
+                        <p>Réplicas, libros y artículos exclusivos</p>
+                    </div>
+                    <span class="secciones-arrow"></span>
+                </a>
+            </div>
+        </section>
         
 
        <!-- Inicio Footer -->
@@ -230,6 +281,52 @@
         </footer>
         <!-- Fin Footer -->
 
-        </body>
+        <!-- CARRUSEL -->
+        <script>
+            const imgs = document.querySelectorAll('.track img');
+            let index = 1;
+
+            function update() {
+                imgs.forEach(img => img.className = '');
+
+                imgs[index].classList.add('active');
+                if (imgs[index - 1]) imgs[index - 1].classList.add('prev');
+                if (imgs[index + 1]) imgs[index + 1].classList.add('next');
+            }
+
+            document.querySelector('.arrow.right').onclick = () => {
+                index = (index + 1) % imgs.length;
+                update();
+            };
+
+            document.querySelector('.arrow.left').onclick = () => {
+                index = (index - 1 + imgs.length) % imgs.length;
+                update();
+            };
+
+            update();
+       </script>
+
+       <!-- DESPLEGAR DATOS CURIOSOS -->
+
+       <script>
+            function toggleFaq(el) {
+            const answer = el.nextElementSibling;
+            const arrow = el.querySelector(".arrow");
+
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+                arrow.style.transform = "rotate(0deg)";
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                arrow.style.transform = "rotate(90deg)";
+            }
+            }
+        </script>
+
+      
+
+
+    </body>
 
    </html>

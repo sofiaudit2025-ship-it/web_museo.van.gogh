@@ -33,7 +33,7 @@ html, body {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;  
+    box-sizing: border-box;
     font-family: var(--font-secondary);
 }
 
@@ -48,7 +48,7 @@ button {
 body {
     background-color: var(--color-primario);
      overflow-x: hidden;
-    
+
 }
 body {
     background-color: var(--color-primario);
@@ -57,59 +57,16 @@ body {
     line-height: 1.5;
 }
 
-/* TEXTO PRINCIPAL */
-.hero{
-  width: 100%;
+/* SECCION1 */
+.hero {
   height: 100vh;
-  background: linear-gradient(180deg, #0b1626, #0a1320);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.container{
-    display: flex;
-    flex-direction: column;
-    align-items:center;
-    gap: 0.2rem;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    height: 100vh;
-     
-}
-
-.line{
-
-    display: flex;
-    align-items: baseline;
-    gap: 0.80rem;
-    margin-bottom: -1.1rem; 
-    z-index: 2;
-}
-
-.script{
-  font-family: var(--font-primary);
-  font-size: 6.8rem;
-  font-weight: 400;
-}
-
-.bold{
-  font-family: var(--font-secondary);
-  font-size: 5.2rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.name{
+  background: linear-gradient(#0b1625, #05080f);
   display: flex;
   flex-direction: column;
-  line-height: 1.05;
-}
-
-.last-name{
-  margin-top: -0.3rem;
+  justify-content: center;
+  align-items: center;
+  color: #f2c94c;
+  text-align: center;
 }
 
 /* BOTON CONSIGUE TUS ENTRADAS */
@@ -129,231 +86,349 @@ body {
   box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
 }
 
-/* FOTO Y DEGRADADO */
-.biografia {
-    width: 100%; 
-    position: relative;
-    height: 250vh;
-     min-height: 100vh;
-     background-image: 
-        var(--degradado),
-        url("media/img/indexretrato.webp");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #f5f5f5;
-    font-family: serif;
-     margin-top: 0px;  
-}
-  
 
 
-.texto {
-    position: absolute;
-    max-width: 260px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    z-index: 2;
-}
 
-
-.t1 {
-    top: 20%;
-    left: 9%;
-}
-
-.t2 {
-    top: 47%;
-    right: 1%;
-}
-
-.t3 {
-    bottom: 40%;
-    left: 7%;
-}
-
-.t4 {
-    bottom: 23%;
-    right: 10%;
-}
-
-.t5 {
-    bottom: 2%;
-    right: 80%;
-}
-
-/* SECCIÓN EXPLORa */
-.explora {
-   padding: 40px 20px;
-  margin: 50px 105px;
-  margin-bottom: 120px;
-}
-.explora h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-.explora p {
-  color: #cbd5e1;
-  margin-bottom: 40px;
-}
-
-/* CARTAS */
-.cards {
+/* SECCION2(VIDEO) */
+.video-section {
+  height: 80vh; 
   display: flex;
-  gap: 25px;
-  flex-wrap: wrap;
-  justify-content: center; 
-  max-width: 1200px;
-   margin: 0 auto;  
+  width: 100vw; 
+  justify-content: center;
+  overflow: hidden; 
+  align-items: center;
 }
 
-.card {
-  position: relative;
- width: 380px;
-  height: 180px;
-  overflow: hidden;
-}
-
-.card img {
-  width: 100%;
+.video-section video {
+  width: 100vw;        
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 
-/* CONTENIDO */
+/* SECCION3(FOTO) */
+.image-section {
+  height: 80vh; 
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.card-content {
+}
+
+.image-section img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+/* SECCIÓN4(CARROUSEL) */
+.gallery {
+  background: #0b1625;
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.gallery h2 {
+  font-size: 5rem;
+  margin-bottom: 60px;
+  line-height: 1.2;
+}
+
+.highlight {
+  color: #D5A022;
+  font-family: var(--font-secondary);
+}
+
+.script {
+  font-family: var(--font-primary);
+  font-style: italic;
+  color: #FFFFFF;
+}
+
+
+
+.coverflow  {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.track {
+  position: relative;
+  width: 600px;
+  height: 340px;
+}
+
+.track img {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 220px;
+  object-fit: cover;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.track img.active {
+  width: 240px;
+  height: 320px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 3;
+}
+
+.track img.prev {
+  transform: translate(-160%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.track img.next {
+  transform: translate(70%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.arrow {
+  background: #D5A022;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+}
+
+.arrow.left {
+  left:300px;
+}
+
+.arrow.right {
+  right: 300px;
+}
+
+.cta {
+  background: #D5A022;
+  border: none;
+  padding: 10px 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 40px;
+  color: #000;
+  
+}
+
+
+/* SECCION4(CURIOSIDADES) */
+.Datos-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.datos-title {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.title-a {
+  font-family: var(--font-secondary);
+  font-size: 5rem;
+  font-weight: 400;
   color: #fff;
-  padding: 15px;
+  line-height: 1;
+}
+
+.title-b {
+  font-family: var(--font-primary);
+  font-size: 5rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+
+
+.datos-item {
+  border-top: 1px solid #ccc;
+}
+
+.datos-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  cursor: pointer;
+  position: relative;
+  font-size: 1rem;
+  color: #fff;
+}
+.datos-question span:first-child {
+  flex: 1;
+}
+
+.datos-question:hover {
+  background-color: #D5A022;
+}
+
+.arrow {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+
+   /* flecha */
+  
+  margin-left: 600px; 
+  border-right: 3px solid white;
+  border-bottom: 3px solid white;
+  transform: rotate(-45deg);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+
+  transition: transform 0.3s ease;
+}
+
+
+
+.datos-answer {
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.3s ease;
+   padding: 0 0;
+   font-size: 0.80rem;
+   color: #ffffff;
+   font-family: var(--font-secondary);
+} 
+
+
+/* SECCION5(EXPLORA) */
+
+.explora {
+  padding: 80px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-
-}
-
-.card-content h3 {
-  margin: 0 0 6px;
-  font-size: 16px;
-}
-
-.card-content p {
- margin: 0 0 14px;
- font-size: 12px;
- line-height: 1.3;
+  align-items: center; 
+  text-align: left;
+  margin-top: 100px;
 }
 
 
+.explora h1 {
+  grid-column: 1 / -1;   
+  text-align: center;   
+  margin-bottom: 40px; 
+  color: #0C1625; 
+  font-size: 5rem;
+  margin-top: 60px;
+}
 
-/* Botón */
-.btn {
-  background-color: #f5b301;
-  color: #000;
-  padding: 8px 0;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 11px;
-  text-align: center;
+.explora h1 span {
+  font-family: serif;
+  color: #d4a017;
+  font-style: italic;
+  display: block;
+  font-size: 5rem;
+   margin-top: -50px;
+
+}
+
+.secciones {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   width: 100%;
-  transition: background .25s;
-
-
+  max-width: 1000px;
+  margin: 0 auto;
 
 }
-
-.btn:hover {
-  opacity: 0.9;
-  box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
+.secciones a:first-child {
+  border-top: 3px solid #0C1625;
 }
 
-/* RESPONSIVE */
+
+.item-galeria {
+  width: 100%;
+  padding: 25px 0;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid #0C1625;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.item-galeria:hover {
+  opacity: 0.7; 
+}
 
 
+.item-galeria h2 {
+  margin: 0;
+  color: #0C1625;
+  font-size: 1.8rem;
+}
 
-/* TEXTO PRINCIPAL */
+.item-galeria p {
+  margin: 5px 0 0;
+  color: #0C1625;
+  font-family: var(--font-secondary);
+  font-size: 0.9rem;
+  font-weight: 100;
+}
 
-@media (max-width: 768px){
 
+.secciones-arrow {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+
+   
   
+  margin-left: 0px; 
+  margin-top: -4px; 
+  border-right: 3px solid #D5A022;
+  border-bottom: 3px solid #D5A022;
+  transform: rotate(-45deg);
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
 
-   .script{
-     font-size: 4.5rem;
-   }
+  transition: transform 0.3s ease;
+}
 
-   .bold{
-     font-size: 3.2rem;
-   }
-
-   .line{
-     gap: 0.4rem;
-     margin-bottom: -1.1rem;
-   }
-
-   .name{
-      line-height: 0.95;
-   }
-
-   .hero-btn{
-     margin-top: 3rem;
-     padding: 12px 26px;
-   }
+.item-galeria {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* esto centra verticalmente la flecha */
 }
 
 
-/* BIOGRAFÑIA RESPONSIVE */
 
-@media (max-width: 768px) {
-    .biografia {
-        height: 180vh;
-        margin-top: 0px;
-    }
 
-    .texto {
-        max-width: 150px;
-        font-size: 0.85rem;
-        line-height: 1.4;
-    }
 
-    .t1 { top: 15%; left: 5%; }
-    .t2 { top: 42%; right: 3%; }
-    .t3 { bottom: 35%; left: 4%; }
-    .t4 { bottom: 18%; right: 5%; }
-    .t5 { bottom: 2%; right: 60%; }
-}
-  
-/* EXPLORA */
 
-@media (max-width: 600px) {
-  .explora {
-    padding: 30px 15px;
-  }
-
-  .card {
-    max-width: 100%; /* una card por fila */
-    height: 180px;
-  }
-
-  .card-content h3 {
-    font-size: 16px;
-  }
-
-   .card-content p {
-    font-size: 13px;
-  }
-
-  .btn {
-    font-size: 11px;
-    padding: 6px 0;
-  }
+.item.galeria::before {
+  background-image: url('../css/media/img/lanocheestrellada.webp');
 }
 
-  
-
-    
-
-
-
+.item.visita::before {
+  background-image: url('ruta/a/tu-imagen-visita.jpg');
+}
+.item.tienda::before {
+  background-image: url('ruta/a/tu-imagen-tienda.jpg');
+}
+.item:hover::before {
+  opacity: 1;
+}
 
