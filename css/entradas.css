@@ -705,7 +705,13 @@ html{
     font-weight: 400;
 }
 
-
+.info-t {
+    display: flex;                
+    justify-content: space-between; 
+    align-items: center;          
+    flex: 1;                      
+    margin-right: 30px;         
+}
 
 /* Estilo para el título de dos tipografías */
 .titulo-mixto-modal {
