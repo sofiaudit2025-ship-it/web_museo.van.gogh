@@ -11,27 +11,23 @@ function cerrarModal() {
 }
 
 
-
 function irAPaso(n) {
-    const pasos = document.querySelectorAll('.modal-paso');
-    pasos.forEach(p => p.style.display = 'none');
     
-    
-    document.getElementById('step-' + n).style.display = 'block';
-
-    function irAPaso(n) {
-    // Si el usuario intenta pasar del Paso 2 al Paso 3...
     if (n === 3) {
         let totalEntradas = ticketData.adulto + ticketData.estudiante + ticketData.gratis;
         
-        // Si no ha seleccionado ninguna, le avisamos y frenamos
+        // Si el total es 0, lanzamos alerta y cortamos la función con 'return'
         if (totalEntradas === 0) {
-            alert("Debes seleccionar al menos una entrada para continuar.");
+            alert("Por favor, selecciona al menos una entrada para continuar.");
             return; 
         }
     }
-}
 
+    
+    const pasos = document.querySelectorAll('.modal-paso');
+    pasos.forEach(p => p.style.display = 'none');
+    
+    document.getElementById('step-' + n).style.display = 'block';
 }
 
 function cambiarCant(tipo, val) {
