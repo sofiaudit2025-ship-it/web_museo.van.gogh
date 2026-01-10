@@ -398,3 +398,7 @@ body {
     font-size: var(--tamano-texto-menu);
     color: var(--color-secundario);
 }
+
+.botonera > button.activo {
+    color: var(--color-destacados);
+}

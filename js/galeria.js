@@ -155,7 +155,11 @@ function closeModal() {
 
 // FILTRO
 
-function filtro(f) {
+function filtro(f, btn) {
+    if (btn) {
+        $(".botonera button").removeClass("activo");
+        $(btn).addClass("activo");
+    }
 
     var busqueda =""
     switch(f) {
@@ -181,5 +185,4 @@ function filtro(f) {
     }
     galeria(busqueda);
 }
-
 

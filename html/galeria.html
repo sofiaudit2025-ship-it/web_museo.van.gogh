@@ -84,11 +84,11 @@
             </section>
         
             <div class="botonera">
-                <button onclick="filtro('todos')">TODOS</button>
-                <button onclick="filtro('retratos')">PERSONAS</button>
-                <button onclick="filtro('exterior')">PAISAJES</button>
-                <button onclick="filtro('color')">A COLOR</button>
-                <button onclick="filtro('bn')">BLANCO&NEGRO</button>
+                <button class="activo" onclick="filtro('todos', this)">TODOS</button>
+                <button onclick="filtro('retratos', this)">PERSONAS</button>
+                <button onclick="filtro('exterior', this)">PAISAJES</button>
+                <button onclick="filtro('color', this)">A COLOR</button>
+                <button onclick="filtro('bn', this)">BLANCO&NEGRO</button>
             </div>
 
             <section id="gallery"></section>
