@@ -8,14 +8,10 @@
     --color-destacados: #D5A022;
     --font-primary: "Italianno", cursive;
     --font-secondary: "Helvetica", sans-serif;
-    --degradado: linear-gradient(
-        to top,
-        rgba(12, 22, 37, 1) 0%,
-        rgba(12, 22, 37, 0.95) 20%,
-        rgba(12, 22, 37, 0.75) 40%,
-        rgba(12, 22, 37, 0.4) 60%,
-        rgba(12, 22, 37, 0) 100%
-        );
+    --degradado: linear-gradient(180deg, rgba(12, 22, 37, 0.68) 0%, rgba(12, 22, 37, 1) 100%);
+
+    --degradado-hero: linear-gradient(180deg, rgba(12, 22, 37, 0.2) 0%, rgba(12, 22, 37, 1) 100%);
+
     --margenes-texto: 0.2rem 0.4rem;
     --interlineado: 1.4;
     --distancia-iconos: 1rem;
@@ -60,6 +56,7 @@ body {
 /* SECCION1 */
 .hero {
   height: 100vh;
+  position: relative;
   background: linear-gradient(#0b1625, #05080f);
   display: flex;
   flex-direction: column;
@@ -67,6 +64,27 @@ body {
   align-items: center;
   color: #f2c94c;
   text-align: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--degradado-hero);
 }
 
 /* BOTON CONSIGUE TUS ENTRADAS */
@@ -84,26 +102,6 @@ body {
 .hero-btn:hover {
   opacity: 0.9;
   box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
-}
-
-
-
-
-/* SECCION2(VIDEO) */
-.video-section {
-  height: 80vh; 
-  display: flex;
-  width: 100vw; 
-  justify-content: center;
-  overflow: hidden; 
-  align-items: center;
-}
-
-.video-section video {
-  width: 100vw;        
-  height: 100%;
-  object-fit: cover;
-  display: block;
 }
 
 
@@ -486,6 +484,10 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.secciones,
+.secciones a {
+  cursor: none;
+}
 
 /* RESPONSIVE */
 
