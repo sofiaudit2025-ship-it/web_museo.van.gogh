@@ -66,9 +66,10 @@ const arrow = el.querySelector(".arrow");
 if (answer.style.maxHeight) {
     answer.style.maxHeight = null;
     arrow.style.transform = "rotate(0deg)";
+    el.classList.remove("active");
 } else {
+    el.classList.add("active");
     answer.style.maxHeight = answer.scrollHeight + "px";
     arrow.style.transform = "rotate(90deg)";
 }
 }
-
