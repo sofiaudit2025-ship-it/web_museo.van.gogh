@@ -13,7 +13,8 @@
             
             <!-- ARCHIVO EXTERNO DE JS -->
             <script src="../js/jquery-3.7.1.min.js"></script>
-            <script src="../js/script.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vivus@latest/dist/vivus.min.js" defer></script>
+            <script src="../js/script.js" defer></script>
             <script src="../js/home.js" defer></script>
     
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -85,10 +86,15 @@
             <video class="hero-video" autoplay muted loop playsinline>
                 <source src="../Resources/videohome.mp4" type="video/mp4">
             </video>
-            <div class="hero-content">
-                <!-- <img src="../Resources/firma-vangogh-blanco.svg" alt=""> -->
-                <!-- <a href="entradas.html" class="hero-btn">CONSIGUE TUS ENTRADAS</a> -->
+ 
+            <div class="firma-container">
+                <div class="signature-container">
+                    <div id="svg-container"></div>
+                </div>
             </div>
+        </section>
+
+        <section class="intro-bio">
         </section>
 
         <!-- SECCION4(DATOS CURIOSOS) -->

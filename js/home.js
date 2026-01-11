@@ -209,7 +209,7 @@ class Carousel3D {
   }
   }
   
-  // Inicializar el carrusel con imágenes de ejemplo
+  // imágenes del carrusel 
   const images = [
   { url: '../Resources/retrato-obra.webp', alt: '', caption: 'Una de las pocas fotografías reales de Van Gogh. Tomada cuando era joven.' },
   { url: '../Resources/foto-antigua-retrato.webp', alt: '', caption: 'Sus padres le llamaron Vicent en honor a su hermano, que falleció al nacer, un año antes que él' },
@@ -225,11 +225,137 @@ class Carousel3D {
   { url: '../Resources/retrato-curiosidades.webp', alt: '', caption: 'Vincent Van Gogh murió considerándose un fracaso tanto como artista como ser humano, solo vendió una obra en vida.' }
   ];
   
+  
+
+
+
+
+  // FIRMA CON VIVUS
+
+  let vivusInstance = null;
+  let svgLoaded = false;
+
+  async function loadSVG() {
+      try {
+          const response = await fetch('../Resources/firma-vangogh.svg');
+          const svgText = await response.text();
+          const svgContainer = document.getElementById('svg-container');
+          svgContainer.innerHTML = svgText;
+          
+          // Obtener el SVG del contenedor
+          const svg = svgContainer.querySelector('svg');
+          if (svg) {
+              svg.id = 'firma-svg';
+              svgLoaded = true;
+              // Aplicar estilos al SVG cargado
+              applySVGStyles();
+              // Inicializar Vivus después de cargar el SVG
+              console.log("InitVivus...")
+              initVivus();
+          }
+      } catch (error) {
+          console.error('Error al cargar el SVG:', error);
+      }
+  }
+
+  function applySVGStyles() {
+      const paths = document.querySelectorAll('#firma-svg path');
+      paths.forEach(path => {
+          path.style.fill = 'none';
+          path.style.stroke = '#ffffff';
+          path.style.strokeWidth = '3';
+          path.style.strokeLinecap = 'round';
+          path.style.strokeLinejoin = 'round';
+          path.style.opacity = '0';
+      });
+  }
+
+  function orderPathsLeftToRight() {
+      const svg = document.getElementById('firma-svg');
+      if (!svg) return;
+      
+      const paths = Array.from(svg.querySelectorAll('path'));
+      
+      paths.sort((a, b) => {
+          const aBox = a.getBBox();
+          const bBox = b.getBBox();
+          return aBox.x - bBox.x;
+      });
+      
+      if (paths.length > 0) {
+          const parent = paths[0].parentNode;
+          paths.forEach(path => {
+              parent.appendChild(path);
+          });
+      }
+  }
+
+  function hideSignature() {
+      // Ocultar todos los paths del SVG
+      const paths = document.querySelectorAll('#firma-svg path');
+      paths.forEach(path => {
+          path.style.opacity = '0';
+          path.style.fill = 'none';
+      });
+  }
+
+  function initVivus() {
+      if (!svgLoaded) return;
+      
+      // Ordenar paths de izquierda a derecha
+      orderPathsLeftToRight();
+      
+      // Destruir instancia anterior si existe
+      if (vivusInstance) {
+          vivusInstance.destroy();
+      }
+      console.log("new Vivus")
+      // Crear nueva instancia de Vivus con animación secuencial
+      vivusInstance = new Vivus('firma-svg', {
+          type: 'oneByOne',
+          duration: 200,
+          delay: 80,
+          animTimingFunction: Vivus.EASE_IN_OUT,
+          start: 'manual', // No iniciar automáticamente
+          pathTimingFunction: Vivus.EASE_IN_OUT
+      }, function(obj) {
+          console.log('Animación completada');
+          // Aplicar el relleno después de que termine la animación
+          setTimeout(function() {
+              const paths = document.querySelectorAll('#firma-svg path');
+              paths.forEach(path => {
+                  path.style.fill = '#ffffff';
+                  path.style.opacity = '1';
+              });
+          }, 100);
+      });
+      
+      // Mostrar trazos y reproducir la animación una vez creado el SVG
+      const paths = document.querySelectorAll('#firma-svg path');
+      paths.forEach(path => {
+          path.style.fill = 'none';
+          path.style.stroke = '#ffffff';
+          path.style.strokeWidth = '3';
+          path.style.opacity = '1';
+      });
+      vivusInstance.reset().play();
+  }
+
+
+
+
   // Esperar a que el DOM esté listo
   document.addEventListener('DOMContentLoaded', () => {
-  const container = document.querySelector('.carousel-container');
-  const carousel = new Carousel3D(container, images, {
-      autoplay: true,
-      autoplayInterval: 3000
-  });
+    
+    //Firma
+    loadSVG();
+    console.log("svg loaded")
+    
+    
+    //Carousel
+    const container = document.querySelector('.carousel-container');
+    const carousel = new Carousel3D(container, images, {
+        autoplay: true,
+        autoplayInterval: 3000
+    });
   });
