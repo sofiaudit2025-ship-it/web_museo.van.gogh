@@ -7,6 +7,7 @@
     --color-terciario: #000000;
     --color-destacados: #D5A022;
     --font-primary: "Italianno", cursive;
+    --font-primary-weight: 400;
     --font-secondary: "Helvetica", sans-serif;
     --degradado: linear-gradient(180deg, rgba(12, 22, 37, 0.68) 0%, rgba(12, 22, 37, 1) 100%);
 
@@ -107,6 +108,60 @@ body {
   opacity: 0.9;
   box-shadow: 0 4px 20px rgba(255, 255, 100, 0.3);
 }
+
+/* INTRO BIO */
+.intro-web {
+  position: relative;
+  margin: 90px 0 70px;
+  padding: 90px 0;
+  color: var(--color-secundario);
+  display: flex;
+  justify-content: center;
+}
+
+.intro-web-content {
+  /* max-width: 1100px; */
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+}
+
+.intro-web-content h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--font-primary-weight);
+  color: var(--color-destacados);
+  display: flex;
+  justify-content: center;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.intro-web-content p {
+  font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  margin: 0;
+  display: flex;
+  max-width: 900px;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .intro-web {
+    margin: 60px 0 50px;
+    padding: 60px 0;
+  }
+
+  .intro-web-content {
+    padding: 0 18px;
+    gap: 16px;
+  }
+
+  .intro-web-content p {
+    max-width: 100%;
+  }
+}
+
 
 
 /* SECCION3(FOTO) */
