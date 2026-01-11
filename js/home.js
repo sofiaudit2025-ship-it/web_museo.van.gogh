@@ -12,9 +12,9 @@ items.forEach(item => {
     console.log("Ratón entró en:", item.className); 
     
     let url = "";
-    if (item.classList.contains('item-galeria')) url = "../css/media/img/noche_estrellada_cursor.png";
-    if (item.classList.contains('item-visita')) url = "../css/media/img/planificatuvisita-cursor.png";
-    if (item.classList.contains('item-tienda')) url = "../css/media/img/tienda-cursor.png";
+    if (item.classList.contains('item-galeria')) url = "../Resources/noche_estrellada_cursor.png";
+    if (item.classList.contains('item-visita')) url = "../Resources/planificatuvisita-cursor.png";
+    if (item.classList.contains('item-tienda')) url = "../Resources/tienda-cursor.png";
 
     mouseImg.style.backgroundImage = `url('${url}')`;
     mouseImg.style.display = 'block'; // Aquí se vuelve visible

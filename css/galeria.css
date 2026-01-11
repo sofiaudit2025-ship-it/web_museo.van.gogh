@@ -42,7 +42,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: clamp(5rem, 14vh, 8rem) clamp(1.5rem, 8vw, 6rem) clamp(3rem, 10vh, 6rem);
-    background-image: var(--degradado), url("media/img/HeroIntroGaleria.webp");
+    background-image: var(--degradado), url("Resources/HeroIntroGaleria.webp");
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
