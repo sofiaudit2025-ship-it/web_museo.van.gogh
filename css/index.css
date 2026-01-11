@@ -151,63 +151,52 @@ body {
 
 
 
-
-
-.carousel {
+.coverflow  {
   position: relative;
-  margin: 40px auto;
-  overflow: hidden;
-  width: 820px;
-  font-family: "Inter", sans-serif;
-}
-
-
-
-
-.carousel-track {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
-  justify-content: center;  
-  overflow: hidden;        
-  scroll-behavior: smooth;
-  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-.slide {
-  flex: 0 0 220px;           
-  height: 330px;  
-  opacity: 0.6;
-  transform: scale(0.9);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.track {
+  position: relative;
+  width: 600px;
+  height: 340px;
 }
 
-
-
-.slide.active {
-  opacity: 1;
-  transform: scale(1.1);
-}
-
-
-
-.slide img {
-  width: 100%;
-  border-radius: 10px;
-  display: block;
+.track img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 220px;
   object-fit: cover;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: 0.4s ease;
 }
 
-
-.caption {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  color: #444;
+.track img.active {
+  width: 240px;
+  height: 320px;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  z-index: 3;
 }
 
-.gallery-arrow {
+.track img.prev {
+  transform: translate(-160%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.track img.next {
+  transform: translate(70%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.gallery-arrow{
   background: #D5A022;
   border: none;
   width: 44px;
@@ -222,13 +211,19 @@ body {
   left:300px;
 }
 
-
 .gallery-arrow.right {
   right: 300px;
 }
 
-.gallery-arrow:hover {
-  background: rgba(0,0,0,0.8);
+.cta {
+  background: #D5A022;
+  border: none;
+  padding: 10px 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 40px;
+  color: #000;
+  
 }
 
 
@@ -363,7 +358,7 @@ body {
 }
 
 
-.item-galeria {
+.secciones a {
   width: 100%;
   padding: 25px 0;
   justify-content: space-between;
@@ -372,20 +367,20 @@ body {
   text-decoration: none;
   color: inherit;
   transition: opacity 0.3s ease;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* esto centra verticalmente la flecha */
 }
 
-.item-galeria:hover {
-  opacity: 0.7; 
-}
 
-
-.item-galeria h2 {
+.secciones a h2 {
   margin: 0;
   color: #0C1625;
   font-size: 1.8rem;
 }
 
-.item-galeria p {
+.secciones a p {
   margin: 5px 0 0;
   color: #0C1625;
   font-family: var(--font-secondary);
@@ -398,9 +393,6 @@ body {
   width: 18px;
   height: 18px;
   display: inline-block;
-
-   
-  
   margin-left: 0px; 
   margin-top: -4px; 
   border-right: 3px solid #D5A022;
@@ -409,32 +401,42 @@ body {
   background: none;
   border-radius: 0;
   box-shadow: none;
-
   transition: transform 0.3s ease;
 }
 
-.item-galeria {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* esto centra verticalmente la flecha */
+
+
+
+/* .item-galeria:hover {
+  cursor: url('../css/media/img/noche_estrellada_cursor.png');
 }
 
+.item-visita:hover {
+  cursor: url('../css/media/img/planificatuvisita-cursor.png');
+}
+.item-tienda:hover {
+  cursor: url('../css/media/img/tienda-cursor.png');
+}  */
 
 
-
-
-
-.item.galeria::before {
-  background-image: url('../css/media/img/lanocheestrellada.webp');
+#mouse-image {
+  width: 220px;
+  height: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99; 
+  display: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%);
 }
 
-.item.visita::before {
-  background-image: url('ruta/a/tu-imagen-visita.jpg');
+/* Opcional: oculta el puntero normal cuando estés sobre las secciones */
+.secciones a:hover {
+  cursor: none;
 }
-.item.tienda::before {
-  background-image: url('ruta/a/tu-imagen-tienda.jpg');
-}
-.item:hover::before {
-  opacity: 1;
-}
+
 

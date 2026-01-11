@@ -14,11 +14,14 @@
             <!-- ARCHIVO EXTERNO DE JS -->
             <script src="../js/jquery-3.7.1.min.js"></script>
             <script src="../js/script.js"></script>
+            <script src="../js/home.js" defer></script>
     
             <meta name="viewport" content="width=device-width, initial-scale=1">
         </head>
         <body>
-            <!-- MENU -->
+        <div id="mouse-image"></div>
+        
+        <!-- MENU -->
         <div class="menu">
                  <div class="menu-logo">
                     <a href="index.html"><img src="../css/media/img/LogoMuseo-negro.webp" alt="VanGoghMuseum"></a>
@@ -105,20 +108,22 @@
                 <span class="script">Van Gogh</span>
             </h2>
 
-            <div class="carousel">
-
+            <div class="coverflow">
                 <button class="gallery-arrow left">&#8249;</button>
-                <div class="carousel-track">
-                    <div class="slide"><img src="../css/media/img/indexretrato.webp" ><div class="caption">Una de las pocas fotografías reales de Van Gogh. Tomada cuando era joven, ofrece una mirada auténtica más allá de sus autorretratos.</div></div>
-                    <div class="slide"><img src="../css/media/img/fotoretrato.jpg"><div class="caption">Una de las pocas fotografías reales de Van Gogh.</div></div>
-                    <div class="slide"><img src="../css/media/img/foto2curiosidades.jpg"><div class="caption">Imagen histórica confirmada del artista adulto.</div></div>
-                    <div class="slide"><img src="../css/media/img/lanocheestrellada.webp"><div class="caption">La noche estrellada (1889), pintada desde el sanatorio.</div></div>
-                    <div class="slide"><img src="../css/media/img/París siglo XIX.png"><div class="caption">París en el siglo XIX, inspiración clave.</div></div>
-                    <div class="slide"><img src="../css/media/img/Cartas a Theo.jpg"><div class="caption">Cartas a Theo, fundamentales para entender su vida.</div></div>
-                    <div class="slide"><img src="../css/media/img/vistadesdeestudio.jpg"><div class="caption">Vista desde su estudio en Saint-Rémy.</div></div>
+
+                <div class="track">
+                    <img src="../css/media/img/indexretrato.webp" class="active">
+                    <img src="../css/media/img/fotoretrato.jpg">
+                    <img src="../css/media/img/foto2curiosidades.jpg">
+                    <img src="../css/media/img/lanocheestrellada.webp">
+                    <img src="../css/media/img/París siglo XIX.png">
+                    <img src="../css/media/img/Cartas a Theo.jpg">
+                    <img src="../css/media/img/vistadesdeestudio.jpg">
                 </div>
+
                 <button class="gallery-arrow right">&#8250;</button>
             </div>
+             <button class="cta">Ver todo</button>
 
         </section>
 
@@ -190,8 +195,8 @@
         <section class="explora">
             <h1>Explora el <span>museo</span></h1>
 
+            
             <div class="secciones">
-
                 <a href="galeria.html" class="item-galeria">
                     <div>
                         <h2>La Galería</h2>
@@ -200,7 +205,7 @@
                     <span class="secciones-arrow"></span>
                 </a>
 
-                <a href="entradas.html" class="item-galeria">
+                <a href="entradas.html" class="item-visita">
                     <div>
                         <h2>Planifica tu visita</h2>
                         <p>Horarios, precios y cómo llegar al museo</p>
@@ -208,7 +213,7 @@
                      <span class="secciones-arrow"></span>
                 </a>
 
-                <a href="merch.html" class="item-galeria">
+                <a href="merch.html" class="item-tienda" >
                     <div>
                         <h2>Tienda del museo</h2>
                         <p>Réplicas, libros y artículos exclusivos</p>
@@ -216,6 +221,7 @@
                     <span class="secciones-arrow"></span>
                 </a>
             </div>
+
         </section>
         
 
@@ -280,7 +286,7 @@
         <!-- Fin Footer -->
 
         <!-- CARRUSEL -->
-        <!-- <script>
+        <script>
             const imgs = document.querySelectorAll('.track img');
             let index = 1;
 
@@ -303,7 +309,7 @@
             };
 
             update();
-       </script> -->
+       </script>
 
        <!-- DESPLEGAR DATOS CURIOSOS -->
 
@@ -322,46 +328,10 @@
             }
         </script>
 
-       <script>
-            const track = document.querySelector(".carousel-track");
-            const slides = Array.from(document.querySelectorAll(".slide"));
-            const btnLeft = document.querySelector(".gallery-arrow.left");
-            const btnRight = document.querySelector(".gallery-arrow.right");
-
-            let index = 1; // la imagen central
-
-            function updateCarousel() {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle("active", i === index);
-            });
-
-            const slideWidth = slides[0].offsetWidth + 20; // ancho + gap
-            const offset = -(index * slideWidth) + (slideWidth * 1); 
-            // deja 1 slide a la izquierda, 1 a la derecha
-
-            track.style.transform = `translateX(${offset}px)`;
-            }
-
-            btnRight.addEventListener("click", () => {
-            if (index < slides.length - 2) index++;
-            updateCarousel();
-            });
-
-            btnLeft.addEventListener("click", () => {
-            if (index > 1) index--;
-            updateCarousel();
-            });
-
-            updateCarousel();
-        </script>
-
-        
       
-        
+
+
     
-      
-
-
     </body>
 
    </html>
