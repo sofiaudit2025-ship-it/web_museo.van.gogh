@@ -363,7 +363,7 @@ body {
 }
 
 
-.secciones a {
+.item-galeria {
   width: 100%;
   padding: 25px 0;
   justify-content: space-between;
@@ -372,20 +372,20 @@ body {
   text-decoration: none;
   color: inherit;
   transition: opacity 0.3s ease;
+}
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* esto centra verticalmente la flecha */
+.item-galeria:hover {
+  opacity: 0.7; 
 }
 
 
-.secciones a h2 {
+.item-galeria h2 {
   margin: 0;
   color: #0C1625;
   font-size: 1.8rem;
 }
 
-.secciones a p {
+.item-galeria p {
   margin: 5px 0 0;
   color: #0C1625;
   font-family: var(--font-secondary);
@@ -398,6 +398,9 @@ body {
   width: 18px;
   height: 18px;
   display: inline-block;
+
+   
+  
   margin-left: 0px; 
   margin-top: -4px; 
   border-right: 3px solid #D5A022;
@@ -406,42 +409,32 @@ body {
   background: none;
   border-radius: 0;
   box-shadow: none;
+
   transition: transform 0.3s ease;
 }
 
-
-
-
-/* .item-galeria:hover {
-  cursor: url('../css/media/img/noche_estrellada_cursor.png');
+.item-galeria {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* esto centra verticalmente la flecha */
 }
 
-.item-visita:hover {
-  cursor: url('../css/media/img/planificatuvisita-cursor.png');
-}
-.item-tienda:hover {
-  cursor: url('../css/media/img/tienda-cursor.png');
-}  */
 
 
-#mouse-image {
-  width: 220px;
-  height: 150px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 99; 
-  display: none;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: translate(-50%, -50%);
+
+
+
+.item.galeria::before {
+  background-image: url('../css/media/img/lanocheestrellada.webp');
 }
 
-/* Opcional: oculta el puntero normal cuando estés sobre las secciones */
-.secciones a:hover {
-  cursor: none;
+.item.visita::before {
+  background-image: url('ruta/a/tu-imagen-visita.jpg');
 }
-
+.item.tienda::before {
+  background-image: url('ruta/a/tu-imagen-tienda.jpg');
+}
+.item:hover::before {
+  opacity: 1;
+}
 
