@@ -373,6 +373,7 @@ body {
   flex-direction: column;
   align-items: center; 
   text-align: left;
+  margin-top: 80px;
 }
 
 
@@ -401,7 +402,7 @@ body {
   gap: 30px;
   width: 100%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: -60px;
 }
 
 .secciones a:first-child {
@@ -484,3 +485,154 @@ body {
   background-position: center;
   transform: translate(-50%, -50%);
 }
+
+
+/* RESPONSIVE */
+
+/* Seccion5 */
+@media (max-width: 400px) {
+
+  .explora h1 {
+    font-size: 2.4rem;
+  }
+
+  .explora h1 span {
+    font-size: 4rem;
+    margin-top: -40px;
+  }
+
+  
+  .secciones {
+    margin-top: -20px; 
+  }
+
+  .secciones a h2 {
+    font-size: 1.4rem;
+  }
+
+  .secciones a p {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* ———————— 600px ———————— */
+@media (max-width: 600px) {
+
+  .explora h1 {
+    font-size: 3rem;
+    margin-top: 40px;
+  }
+
+  .explora h1 span {
+    font-size: 5rem;
+    margin-top: -50px;
+  }
+
+  
+  .secciones {
+    margin-top: -20px;
+    gap: 15px; 
+  }
+
+  .secciones a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 0;     
+    margin-bottom: -30px;
+  }
+
+  .secciones-arrow {
+    align-self: flex-end;
+    margin-top: 0;
+  }
+}
+
+
+/* Foto final  */
+@media (max-width: 600px) {
+  .image-section {
+    height: 50vh;
+    margin-bottom: -20px;
+    margin-top: -80px;
+    background-position: center top;
+  }
+}
+
+/* Video */
+@media (max-width: 600px) {
+  .video-section {
+    height: 60vh; 
+    min-height: 250px;
+  }
+
+  .video-section video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* SECCION4 */
+@media (max-width: 600px) {
+
+  .gallery h2 {
+    font-size: 3rem;
+  }
+
+  .script {
+    font-size: 3rem;
+  }
+
+  .track {
+    width: 300px;
+    height: 220px;
+  }
+
+  .track img {
+    width: 110px;
+    height: 150px;
+  }
+
+  .track img.active {
+    width: 160px;
+    height: 210px;
+  }
+
+  .track img.prev {
+    transform: translate(-140%, -50%) scale(0.85);
+  }
+
+  .track img.next {
+    transform: translate(40%, -50%) scale(0.85);
+  }
+
+  .track-caption {
+    width: 110px;
+    height: 150px;
+    font-size: 0.6rem;
+  }
+
+  .track-caption.active {
+    width: 160px;
+    height: 210px;
+  }
+
+  .gallery-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .gallery-arrow.left {
+    left: 20px;
+  }
+
+  .gallery-arrow.right {
+    right: 20px;
+  }
+}
+
+
+
