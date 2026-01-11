@@ -9,7 +9,7 @@
     --font-primary: "Italianno", cursive;
     --font-secondary: "Helvetica", sans-serif;
     --degradado: linear-gradient(
-        to bottom,
+        to top,
         rgba(12, 22, 37, 1) 0%,
         rgba(12, 22, 37, 0.95) 20%,
         rgba(12, 22, 37, 0.75) 40%,
@@ -110,17 +110,21 @@ body {
 /* SECCION3(FOTO) */
 .image-section {
   height: 80vh; 
-  background: #111;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-image: var(--degradado), url(media/img/FOTOMUSEO1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: -80px;
 }
 
 .image-section img {
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* SECCIÓN4(CARROUSEL) */
@@ -160,16 +164,16 @@ body {
 
 .track {
   position: relative;
-  width: 600px;
-  height: 340px;
+  width: 720px;
+  height: 420px;
 }
 
 .track img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 160px;
-  height: 220px;
+  width: 190px;
+  height: 260px;
   object-fit: cover;
   transform: translate(-50%, -50%) scale(0.8);
   opacity: 0;
@@ -177,23 +181,67 @@ body {
 }
 
 .track img.active {
-  width: 240px;
-  height: 320px;
+  width: 290px;
+  height: 380px;
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
   z-index: 3;
 }
 
 .track img.prev {
-  transform: translate(-160%, -50%) scale(0.9);
+  transform: translate(-175%, -50%) scale(0.9);
   opacity: 0.7;
   z-index: 2;
 }
 
 .track img.next {
-  transform: translate(70%, -50%) scale(0.9);
+  transform: translate(85%, -50%) scale(0.9);
   opacity: 0.7;
   z-index: 2;
+}
+
+.track-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 190px;
+  height: 260px;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  display: flex;
+  text-align: left;
+  align-items: flex-end;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #FFFFFF;
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.track-caption.active {
+  width: 290px;
+  height: 380px;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 4;
+}
+
+/* para que se vea la descripción medio transparente en las que no se están mostrando */
+.track-caption.prev {
+  transform: translate(-175%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.track-caption.next {
+  transform: translate(85%, -50%) scale(0.9);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.track img:hover + .track-caption {
+  opacity: 1;
 }
 
 .gallery-arrow{
@@ -205,14 +253,15 @@ body {
   font-size: 24px;
   cursor: pointer;
   position: absolute;
+  z-index: 6;
 }
 
 .gallery-arrow.left {
-  left:300px;
+  left: 320px;
 }
 
 .gallery-arrow.right {
-  right: 300px;
+  right: 320px;
 }
 
 .cta {
@@ -225,6 +274,8 @@ body {
   color: #000;
   
 }
+
+
 
 
 /* SECCION4(CURIOSIDADES) */
@@ -315,13 +366,13 @@ body {
 /* SECCION5(EXPLORA) */
 
 .explora {
-  padding: 80px;
+  height: 110vh;
+  padding: 20px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center; 
   text-align: left;
-  margin-top: 100px;
 }
 
 
@@ -351,8 +402,8 @@ body {
   width: 100%;
   max-width: 1000px;
   margin: 0 auto;
-
 }
+
 .secciones a:first-child {
   border-top: 3px solid #0C1625;
 }
@@ -370,7 +421,7 @@ body {
 
   display: flex;
   justify-content: space-between;
-  align-items: center; /* esto centra verticalmente la flecha */
+  align-items: center;
 }
 
 
@@ -433,10 +484,3 @@ body {
   background-position: center;
   transform: translate(-50%, -50%);
 }
-
-/* Opcional: oculta el puntero normal cuando estés sobre las secciones */
-.secciones a:hover {
-  cursor: none;
-}
-
-
