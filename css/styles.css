@@ -61,7 +61,7 @@ video {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 12;
+    z-index: 9999;
     display: grid;
     grid-template-columns: var(--menu-side-width) 1fr var(--menu-side-width);
     align-items: center;
@@ -179,7 +179,7 @@ video {
     padding: 3rem 0;
     background-color: var(--color-primario);
     transition: right 0.8s ease;
-    z-index: 20;
+    z-index: 9999;
 }
 
 #menu > ul {
