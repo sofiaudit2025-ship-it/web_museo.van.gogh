@@ -9,7 +9,3 @@ Sitio web dedicado al Van Gogh Museum Amsterdam elaborado por Sofía Iglesias, E
 - Galeria de obras con API.
 - Tienda y compra de artículos.
 
-## GitHub Pages
-
-Enlace a la demo: 
-
