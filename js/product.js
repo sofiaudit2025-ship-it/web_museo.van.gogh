@@ -1,0 +1,137 @@
+$(document).ready(function() {
+    //LISTA PRODUCTOS
+    const products = [
+        { id: 'collar-girasoles', name: 'Pendientes Girasoles', price: 145.00, categoryLabel: 'JOYERÍA', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:6cb1b7d0-3858-4811-bba4-df9317a0b626/636925-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Collar bañado en oro inspirado en los Girasoles.' },
+        { id: 'pendientes-noche', name: 'Pendientes Noche Estrellada', price: 89.00, categoryLabel: 'JOYERÍA', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:45de3d15-c10d-4c80-a0cc-cd1ad00ac9c4/636987-1.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Pendientes de esmalte azul y oro.' },
+        { id: 'pulsera-almendro', name: 'Pulsera Almendro en Flor', price: 75.00, categoryLabel: 'JOYERÍA', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:6ae8c27d-dc86-4a09-984c-f909954a6d34/paintthestars-1x1.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Pulsera de oro con flores esmaltadas.' },
+        { id: 'anillo-iris', name: 'Anillo Lirios', price: 165.00, categoryLabel: 'JOYERÍA', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:9a6ca8bb-5340-426e-abeb-9ad4170dfc22/681963-3.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Anillo de oro con detalle de lirio.' },
+        { id: 'bufanda-noche', name: 'Bufanda Almendro en Flor', price: 45.00, categoryLabel: 'ACCESORIOS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:4ed428f7-022b-4599-a836-f77bfe23c507/685909-5.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Bufanda de seda con estampado artístico.' },
+        { id: 'camiseta-girasoles', name: 'Camiseta Girasoles', price: 30.00, categoryLabel: 'ACCESORIOS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:288fba88-d593-4431-9d51-ce31c1843fe3/677911-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Camiseta de algodón orgánico.' },
+        { id: 'bolso-arte', name: 'Bolso Tote Arte', price: 25.00, categoryLabel: 'ACCESORIOS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:0e2fa573-8630-4367-8d13-e789a9452794/606003-4.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Bolso de lona resistente.' },
+        { id: 'panuelo-almendro', name: 'Pañuelo Almendro', price: 35.00, categoryLabel: 'ACCESORIOS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:eba3d9dd-7081-431b-91b0-cc0a6cd1e6b8/633481-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Pañuelo de seda elegante.' },
+        { id: 'cojin-girasoles', name: 'Cojín Girasoles', price: 40.00, categoryLabel: 'HOGAR', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:91cc7cdc-26b2-435d-a3dd-bb4070bf751d/635577-3.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Cojín de terciopelo decorativo.' },
+        { id: 'manta-noche', name: 'Manta Girasoles', price: 299.00, categoryLabel: 'HOGAR', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:dda7bd43-b225-47a3-9331-8796504a84b0/636345-3.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Manta de felpa suave.' },
+        { id: 'posavasos-set', name: 'Set de Posavasos', price: 20.00, categoryLabel: 'HOGAR', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:2aad208e-8541-49d3-a0f1-38f75a925309/606461-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Set de 6 posavasos de corcho.' },
+        { id: 'taza-cafe', name: 'Taza de Café', price: 15.00, categoryLabel: 'HOGAR', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:ccc16653-0976-459c-81ca-8b801cacaca6/691290-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Taza de porcelana de 350ml.' },
+        { id: 'figura-vincent', name: 'Figura Vincent', price: 60.00, categoryLabel: 'DECORACIÓN', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:89582007-696e-4117-a383-10dcef80ff6d/637175-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Figura artesanal de madera.' },
+        { id: 'lampara-arte', name: 'IXXI Van Gogh', price: 130.00, categoryLabel: 'DECORACIÓN', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:4e2e1773-dd5f-4b5f-ae32-fa9728e8dc11/290103-1.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'IXXI Van Gogh, Almendro en flor 160 x 120.' },
+        { id: 'reloj-girasoles', name: 'Cubierta de jarrón Los girasoles', price: 65.00, categoryLabel: 'DECORACIÓN', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:df37cc76-d850-4939-9974-3e72b3d7de79/vaas-697568.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Cubierta de jarrón de papel, Los girasoles' },
+        { id: 'lienzo-noche', name: 'Lienzo XL Girasoles', price: 179.00, categoryLabel: 'LIENZOS Y LÁMINAS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:2da725a6-e074-43cd-909d-ed67bf47efdb/206517-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Reproducción a tamaño real impresa en lienzo de la más alta calidad. Se entrega enrollada en un tubo y necesita ser tensada por un enmarcador.' },
+        { id: 'lamina-girasoles', name: 'Lienzo XL Almendro', price: 179.00, categoryLabel: 'LIENZOS Y LÁMINAS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:2254320e-b2b0-45fe-9aff-e0540286de24/206555-2.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Reproducción a tamaño real impresa en lienzo de la más alta calidad. Se entrega enrollada en un tubo y necesita ser tensada por un enmarcador.' },
+        { id: 'poster-almendro', name: 'Lienzo L Almendro', price: 109.00, categoryLabel: 'LIENZOS Y LÁMINAS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:04a0ba50-6970-4b93-9266-454d76ce30cb/206838-4.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'En lino de la más fina calidad' },
+        { id: 'marco-dorado', name: 'Azulejo cerámico en marco de madera, Girasoles', price: 50.00, categoryLabel: 'LIENZOS Y LÁMINAS', image: 'https://www.vangogh.shop/l/es/library/download/urn:uuid:3a6b2c35-e508-407d-a88c-af5e83dd7d14/636222+3.jpg?scaleType=1&width=2000&height=2000&color=ffffff', description: 'Hecho a mano en nuestro taller de Ámsterdam, cuidadosamente envuelto en papel seda amarillo y negro y presentado en una caja hecha a medida. Incluye un certificado con el sello dorado de Dutch Art Reproductions. Un regalo que da gusto abrir, para otra persona o para ti mismo.' }
+    ];
+
+    //DESCRIPCIONES LARGAS
+    const detailsData = {
+        'collar-girasoles': { longDescription: 'Estos pendientes chapados en oro están inspirados en los Girasoles de Van Gogh y están hechos a mano en los Países Bajos con plástico reciclado. La colección de joyas es un tributo creativo y divertido a la obra de Van Gogh, con su uso expresivo del color y sus formas impresionistas. El diseño lúdico tiene un impacto positivo en tu estado de ánimo y un impacto mínimo en el medio ambiente. <br> <br> Las joyas forman parte de una colaboración especial entre el Museo Van Gogh y All Things We Like. La fundadora Janneke: “Nuestros exclusivos Dutch EcoDesigns no solo son bonitos por fuera, sino también por dentro. La naturaleza es nuestra mayor inspiración, y por eso nuestros productos se elaboran de forma ecológica.” <br> <br> Tu compra apoya no solo al Museo Van Gogh, sino también una misión compartida por un mundo más bello y sostenible.', related: ['pendientes-noche', 'pulsera-almendro', 'anillo-iris'] },
+        'pendientes-noche': { longDescription: 'La marca de joyería All Things We Like ha transformado la obra maestra Lirios de Van Gogh en una colección refinada y atemporal de joyas de porcelana. Las formas juguetonas y los colores expresivos se inspiran en su icónico bodegón floral y rinden un colorido homenaje a Van Gogh. <br><br> Estas joyas combinan creatividad, artesanía y diseño sostenible. Cada pieza está hecha de porcelana, un material compuesto principalmente de arcilla y otros recursos naturales con un bajo impacto ambiental. Diseñadas en los Países Bajos y elaboradas a mano por artesanos en Portugal, estas joyas ofrecen una mezcla única de diseño ecológico holandés y artesanía europea.', related: ['collar-girasoles', 'pulsera-almendro', 'bufanda-noche'] },
+        'pulsera-almendro': { longDescription: 'Pulsera de metal color dorado grabado con una cita inspiradora extraída de las cartas de Vincent van Gogh: "Go out and paint the stars" (Sal y pinta las estrellas). La pulsera tiene una piedra preciosa de labradorita y una lámina con el logotipo del Museo Van Gogh. Ha sido realizada por A Beautiful Story de manera exclusiva para el Museo Van Gogh.', related: ['collar-girasoles', 'pendientes-noche', 'anillo-iris'] },
+        'anillo-iris': { longDescription: 'Este deslumbrante anillo de diamantes fue creado especialmente para el Museo Van Gogh por Gassan Diamonds. La marca, con sede en Ámsterdam, representa artesanía, calidad comprobada y fiabilidad durante más de 70 años. Estas exclusivas piezas de joyería capturan una elegancia atemporal y serán el regalo perfecto para esa persona especial. Este anillo inspirado en los Girasoles está decorado con 9 diamantes de calidad HP1 y tiene un peso total de 0,04 ct. También están disponibles una pulsera, un collar y unos pendientes a juego en nuestra Tienda del Museo.', related: ['collar-girasoles', 'pulsera-almendro', 'pendientes-noche'] },
+        'bufanda-noche': { longDescription: 'Consiéntete con esta preciosa bufanda suave y brillante con un estampado de la Flor de Almendro de Van Gogh. 100 % seda pura. Medidas: 105 x 195 cm.', related: ['camiseta-girasoles', 'bolso-arte', 'panuelo-almendro'] },
+        'camiseta-girasoles': { longDescription: 'Camiseta diseñada por el ilustrador Marvin Bruin. Los estampados reflejan la obra, la pasión y la desesperación de Vincent. La escena se ilustra como una imagen diurna y nocturna de un campo de trigo que se asemeja a su autorretrato, capturando fragmentos icónicos de su vida y obra para honrar la esencia misma de Van Gogh.', related: ['bufanda-noche', 'bolso-arte', 'panuelo-almendro'] },
+        'bolso-arte': { longDescription: 'El Museo Van Gogh se asoció con la aclamada LOQI para ofrecerte una fusión de arte y moda. Este fabuloso bolso tote te acompañará a todas partes. Su ligero material se pliega en una pequeña bolsa de 11 x 11,5 cm, que cabe fácilmente en tu bolso. Los vibrantes colores de la Flor de Almendro te transportarán al espíritu primaveral durante todo el año. El bolso luce un delicado dibujo de flores en la parte trasera. Con un asa de 27 cm, este versátil bolso se puede llevar como bolso de hombro o como bolso shopper.', related: ['bufanda-noche', 'camiseta-girasoles', 'panuelo-almendro'] },
+        'panuelo-almendro': { longDescription: 'Envuélvete en lujo con esta exquisita bufanda tejida a mano, inspirada en el icónico cuadro de Van Gogh, *Almendro en flor*. <br><br>Esta colorida bufanda no es solo un accesorio elegante, sino también un homenaje al rico patrimonio textil de la India. Cada pieza tarda una semana o más en ser creada. La seda Peace Silk es hilada, tejida e impresa a mano por Ravi y su familia, quienes llevan tres generaciones tejiendo seda en el remoto pueblo de Bhagaiya.<br><br>La Peace Silk, también conocida como seda Ahimsa, tiene una hermosa textura rústica que recuerda al lino, pero es increíblemente ligera al tacto. ¡Esta bufanda está llena de carácter, una pieza atemporal de la que te enamorarás!<br><br>Dado que cada bufanda está hecha a mano, cada pieza es completamente única. Esperamos que aprecies el encanto artesanal de esta bufanda tanto como nosotros.', related: ['bufanda-noche', 'bolso-arte', 'pulsera-almendro'] },
+        'cojin-girasoles': { longDescription: 'Funda de cojín hecha de algodón reciclado, estampada con un detalle de la pintura Los girasoles de Vincent van Gogh.<br><br>Extra especial: gracias a una nueva técnica, ahora es posible producir artículos de alta calidad hechos con un 100% de algodón reciclado. Escanea el código QR en la etiqueta de esta funda de cojín y descubre todo sobre su origen.', related: ['manta-noche', 'posavasos-set', 'taza-cafe'] },
+        'manta-noche': { longDescription: 'Esta manta de jacquard de lujo es mucho más que una simple prenda. Tejida en Como, Italia, región mundialmente famosa por su seda y tejidos finos, lleva el auténtico Made in Italy a tu hogar. Desde hace tres generaciones, la familia Verga crea textiles de calidad excepcional, uniendo tradición y diseño contemporáneo.<br><br>Inspirada en los icónicos Girasoles de Van Gogh, el patrón jacquard muestra flores en tonos cobrizos sobre un fondo verde salvia. La textura rica hace que el diseño cobre vida, convirtiendo esta manta en un accesorio elegante y acogedor para cualquier espacio.', related: ['cojin-girasoles', 'posavasos-set', 'lampara-arte'] },
+        'posavasos-set': { longDescription: '¡Con estos posavasos especiales aportará un acento alegre a su interior! De esta manera puedes disfrutar de las obras maestras de Van Gogh en cualquier momento del día.', related: ['cojin-girasoles', 'taza-cafe', 'manta-noche'] },
+        'taza-cafe': { longDescription: 'Taza de cerámica, rodeada con una impresión de El dormitorio de Van Gogh.', related: ['posavasos-set', 'cojin-girasoles', 'lampara-arte'] },
+        'figura-vincent': { longDescription: 'La muñeca Vincent Kokeshi Girasoles es un objeto de diseño pintado a mano por Lucie Kaas, fabricado con madera certificada FSC y disponible exclusivamente en el Museo Van Gogh.<br><br>El diseño está inspirado en las tradicionales muñecas japonesas Kokeshi: amuletos de madera que simbolizan protección y buena fortuna. En esta versión moderna, Vincent van Gogh y su icónica pintura Los Girasoles ocupan un lugar central.<br><br>Esta muñeca Kokeshi única es un verdadero punto de atracción en cualquier espacio interior. Colócala en una estantería, aparador o mesa de centro como un homenaje alegre y elegante a Van Gogh. También es un regalo ideal para amantes de Van Gogh, el diseño japonés o las colecciones de Lucie Kaas. ¡Un objeto de colección inspirador para aficionados al arte y al diseño!', related: ['lampara-arte', 'reloj-girasoles', 'lienzo-noche'] },
+        'lampara-arte': { longDescription: 'Reproducción contemporánea de la pintura Almendro en Flor. Esta versátil decoración mural consta de tarjetas cuadradas de 20 x 20 cm con cruces conectadas. El diseño de Paulien Berendsen, Eric Sloot y Roel Vaessen fue nominado a los Premios de Diseño Holandeses.', related: ['figura-vincent', 'reloj-girasoles', 'manta-noche'] },
+        'reloj-girasoles': { longDescription: 'En lugar de tirar sus botellas vacías, reutilícelas como floreros con estas exquisitas fundas de papel inspiradas en las obras maestras de Van Gogh. "Los pequeños cambios pueden obrar milagros", es el eslogan de Tiny Miracles Foundation. Las ganancias de las ventas de los floreros sostenibles y plegables contribuyen a reducir la pobreza en todo el mundo. Están disponibles con estampados de Almendro en flor y Los girasoles.<br><br>Tiny Miracles Foundation es una organización de caridad ubicada en los Países Bajos fundada en 2010 por Laurien Meuter y su primo diseñador Pepe Heykoop. La fundación concentra sus esfuerzos en erradicar la pobreza en una de las zonas más deprimidas de la ciudad de Bombay, India: La comunidad Pardeshi en los barrios pobres que rodean la zona roja.', related: ['figura-vincent', 'lampara-arte', 'lienzo-noche'] },
+        'lienzo-noche': { longDescription: 'La pintura "Girasoles" de Vincent van Gogh, impresa en lienzo de la más alta calidad con tintas que garantizan la conservación del color durante 100 años. Esta réplica ha sido cuidadosamente creada para que sea lo más fiel posible al original. Van Gogh pintó esta versión de sus "Girasoles" en enero de 1889 como regalo a su amigo artista Paul Gauguin.', related: ['lamina-girasoles', 'poster-almendro', 'marco-dorado'] },
+        'lamina-girasoles': { longDescription: 'El cuadro Almendro en flor de Vincent van Gogh, impreso en lienzo de la más alta calidad con tintas que garantizan la conservación del color durante 100 años. Esta réplica ha sido cuidadosamente creada para ser lo más fiel posible al original. Van Gogh pintó su Almendro en flor en 1890 para su sobrino Vincent Willem, hijo de su hermano Theo.', related: ['lienzo-noche', 'poster-almendro', 'marco-dorado'] },
+        'poster-almendro': { longDescription: 'El cuadro Almendro en flor de Vincent van Gogh, impreso en lienzo de la más alta calidad con tintas que garantizan la conservación del color durante 100 años. Esta réplica ha sido cuidadosamente creada para ser lo más fiel posible al original. Van Gogh pintó su Almendro en flor en 1890 para su sobrino Vincent Willem, hijo de su hermano Theo.', related: ['lienzo-noche', 'lamina-girasoles', 'marco-dorado'] },
+        'marco-dorado': { longDescription: 'Deja que los icónicos Girasoles de Vincent van Gogh brillen en tu hogar con este azulejo cerámico de alto brillo en un elegante marco de madera negra. El amarillo intenso cobra vida y convierte esta obra en un verdadero punto de atracción en tu interior.<br><br>Hecho a mano en nuestro taller de Ámsterdam, cuidadosamente envuelto en papel seda amarillo y negro y presentado en una caja hecha a medida. Incluye un certificado con el sello dorado de Dutch Art Reproductions. Un regalo que da gusto abrir, para otra persona o para ti mismo.<br><br>Sobre los Girasoles<br>Vincent van Gogh pintó sus famosos Girasoles en Arlés, en el sur de Francia. En 1888 y 1889 realizó cinco grandes cuadros de girasoles utilizando solo tres tonos de amarillo, “y nada más”. Para Vincent, los girasoles simbolizaban la gratitud. Paul Gauguin, gran amigo de Vincent, colgó dos de estos cuadros de girasoles en su habitación y decía que eran “típicamente Vincent”. La obra se convirtió en una imagen icónica de la época que compartieron en la Casa Amarilla.', related: ['lienzo-noche', 'lamina-girasoles', 'poster-almendro'] }
+    };
+
+    const urlParams = new URLSearchParams(window.location.search );
+    const productId = urlParams.get('id');
+
+    if (productId) {
+        const product = products.find(p => p.id === productId);
+        const details = detailsData[productId];
+        
+        if (product && details) {
+            const html = `
+                <div class="container">
+                    <a href="merch.html" class="back-link"><span><svg xmlns="http://www.w3.org/2000/svg" height="10" width="12" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="#ffffff" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 288 480 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-370.7 0 105.4-105.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg> Volver a la tienda</span></a>
+                    <div class="product-layout">
+                        <div class="product-image-large">
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-details">
+                            <span class="product-category">${product.categoryLabel}</span>
+                            <h1 class="product-title">${product.name}</h1>
+                            <p class="product-description">${product.description}</p>
+                            <p class="product-price-large">€${product.price.toFixed(2)}</p>
+                            <div class="product-actions">
+                                <button class="btn-gold" onclick="comprarDirecto()" style="background: #D5A022; color: #0C1625; padding: 15px 30px; border: none; cursor: pointer; font-weight: bold; width: 100%;">AÑADIR AL CARRITO Y COMPRAR</button>
+                            </div>
+                            <div class="product-more-info">
+                                <h3>Más Información</h3>
+                                <p>${details.longDescription}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            $('#productDetail').html(html);
+
+            const grid = $('#relatedGrid');
+            grid.empty();
+            details.related.forEach(id => {
+                const relProduct = products.find(p => p.id === id);
+                if (relProduct) {
+                    const card = `
+                        <article class="product-card" style="cursor:pointer" onclick="window.location.href='product.html?id=${relProduct.id}'">
+                            <div class="product-image">
+                                <img src="${relProduct.image}" style="width:100%">
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">${relProduct.name}</h3>
+                                <p class="product-price">€${relProduct.price.toFixed(2)}</p>
+                            </div>
+                        </article>`;
+                    grid.append(card);
+                }
+            });
+        } else {
+            $('#productDetail').html('<h1 style="text-align:center; padding:100px;">Producto no encontrado</h1>');
+        }
+    }
+});
+
+function comprarDirecto() {
+    const params = new URLSearchParams(window.location.search);
+    const idProducto = params.get('id');
+
+    if (!idProducto) {
+        alert("No se seleccionó ningún producto");
+        return;
+    }
+
+    let carrito = JSON.parse(localStorage.getItem('miCarrito')) || [];
+
+    const nombre = document.querySelector('.product-title')?.innerText || "Producto";
+    const precioTexto = document.querySelector('.product-price-large')?.innerText || "0";
+    const precio = parseFloat(precioTexto.replace('€', '').replace(',', '.'));
+    const imagen = document.querySelector('.product-image-large img')?.src || "";
+
+    carrito.push({
+        id: idProducto,
+        nombre: nombre,
+        precio: precio,
+        imagen: imagen
+    });
+
+    localStorage.setItem('miCarrito', JSON.stringify(carrito));
+    
+        const contadores = document.querySelectorAll('.cuenta-carrito');
+    contadores.forEach(contador => {
+        contador.innerText = carrito.length;
+    });
+
+    if (confirm("¡Producto añadido! ¿Quieres ir a pagar ahora?")) {
+        window.location.href = 'checkout.html';
+    }
+}

@@ -72,8 +72,7 @@
       <h1 class="hero-title">el arte<span class="gold" id="manos">EN TUS MANOS</span></h1>
       <p class="hero-desc">Descubre nuestra exclusiva colección de productos inspirados en las obras maestras de Vincent van Gogh.</p>
       <a href="#coleccion" class="btn-gold hero-cta">
-        Explorar Catálogo
-        <svg xmlns="http://www.w3.org/2000/svg" height="15" width="15" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="#0C1625" d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+        Explorar Catálogo <i class="fa-solid fa-arrow-right"></i>
       </a>
     </div>
   </section>
@@ -163,71 +162,5 @@
   </footer>
 <!-- Fin Footer -->
 
-
-  <script>
-$(document).ready(function() {
-
-  renderProducts('all');
-  
-  $('.category-tab').on('click', function() {
-    const category = $(this).data('category');
-    
-    $('.category-tab').removeClass('active');
-    $(this).addClass('active');
-    
-    renderProducts(category);
-  });
-  
-  $('#menuToggle').on('click', function() {
-    $('#navLinks').toggleClass('show');
-  });
-  
-  $('a[href^="#"]').on('click', function(e) {
-    e.preventDefault();
-    const target = $(this.getAttribute('href'));
-    if (target.length) {
-      $('html, body').animate({
-        scrollTop: target.offset().top - 80
-      }, 800);
-    }
-  });
-});
-
-function renderProducts(category) {
-  const grid = $('#productGrid');
-  grid.empty();
-  
-  const filteredProducts = category === 'all' 
-    ? products 
-    : products.filter(p => p.category === category);
-  
-  filteredProducts.forEach((product, index) => {
-    const card = createProductCard(product, index);
-    grid.append(card);
-  });
-}
-
-function createProductCard(product, index) {
-  const largeClass = product.large ? 'large' : '';
-  
-  return `
-    <article class="product-card ${largeClass}" onclick="goToProduct('${product.id}')" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)">
-      <div class="product-image">
-        <img src="${product.image}" alt="${product.name}" loading="lazy">
-      </div>
-      <div class="product-info">
-        <span class="product-category">${product.categoryLabel}</span>
-        <h3 class="product-name">${product.name}</h3>
-        <p class="product-price">€${product.price.toFixed(2)}</p>
-      </div>
-    </article>
-  `;
-}
-
-function goToProduct(productId) {
-  window.location.href = `product.html?id=${productId}`;
-}
-
-</script>
 </body>
 </html>

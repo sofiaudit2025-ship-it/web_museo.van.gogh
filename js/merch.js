@@ -1,3 +1,67 @@
+$(document).ready(function() {
+
+  renderProducts('all');
+  
+  $('.category-tab').on('click', function() {
+    const category = $(this).data('category');
+    
+    $('.category-tab').removeClass('active');
+    $(this).addClass('active');
+    
+    renderProducts(category);
+  });
+  
+  $('#menuToggle').on('click', function() {
+    $('#navLinks').toggleClass('show');
+  });
+  
+  $('a[href^="#"]').on('click', function(e) {
+    e.preventDefault();
+    const target = $(this.getAttribute('href'));
+    if (target.length) {
+      $('html, body').animate({
+        scrollTop: target.offset().top - 80
+      }, 800);
+    }
+  });
+});
+
+function renderProducts(category) {
+  const grid = $('#productGrid');
+  grid.empty();
+  
+  const filteredProducts = category === 'all' 
+    ? products 
+    : products.filter(p => p.category === category);
+  
+  filteredProducts.forEach((product, index) => {
+    const card = createProductCard(product, index);
+    grid.append(card);
+  });
+}
+
+function createProductCard(product, index) {
+  const largeClass = product.large ? 'large' : '';
+  
+  return `
+    <article class="product-card ${largeClass}" onclick="goToProduct('${product.id}')" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <span class="product-category">${product.categoryLabel}</span>
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-price">€${product.price.toFixed(2)}</p>
+      </div>
+    </article>
+  `;
+}
+
+function goToProduct(productId) {
+  window.location.href = `product.html?id=${productId}`;
+}
+
+
 
 // Product Data
 const products = [
