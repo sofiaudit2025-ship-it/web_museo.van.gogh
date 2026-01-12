@@ -1014,15 +1014,26 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .carousel-item {
+        width: 300px;
+        height: 400px;
+        margin-left: -100px;
+        margin-top: -200px;
+    }
+  }
+
+
+@media (max-width: 768px) {
     .carousel-container {
         height: 500px;
     }
 
     .carousel-item {
-        width: 300px;
-        height: 400px;
-        margin-left: -150px;
+        width: 200px;
+        height: 300px;
+        margin-left: -100px;
         margin-top: -200px;
+        margin-bottom: 200px;
     }
 
     .carousel-item.prev-1 {
